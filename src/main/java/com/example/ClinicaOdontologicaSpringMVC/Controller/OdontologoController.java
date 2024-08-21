@@ -6,11 +6,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/odontologo")
 public class OdontologoController {
     private OdontologoService odontologoService;
-
+    @GetMapping("/todos")
+    public List<Odontologo> listarTodos(){
+        return odontologoService.listarOdontologos();
+    }
     public OdontologoController() {
         odontologoService = new OdontologoService();
     }
@@ -25,5 +30,9 @@ public class OdontologoController {
     @DeleteMapping("/eliminar/{id}")
     public void eliminarOdontologo (@PathVariable Integer id) {
         odontologoService.eliminarOdontologo(id);
+    }
+    @PutMapping("/actualizar")
+    public void actualizarOdontologo (@RequestBody Odontologo odontologo){
+        odontologoService.actualizarOdontologo(odontologo);
     }
 }

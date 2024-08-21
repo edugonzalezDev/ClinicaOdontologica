@@ -20,10 +20,14 @@ public class OdontologoService {
         return OdontologoiDao.buscarporId(id);
     }
 
-    public List<Odontologo> verOdontologos(){
+    public List<Odontologo> listarOdontologos(){
         return OdontologoiDao.listarTodos();
     }
     public void eliminarOdontologo (Integer id) {
         OdontologoiDao.eliminar(id);
     }
+    public void actualizarOdontologo (Odontologo odontologo) {
+        OdontologoiDao.actualizar(odontologo);
+    }
+
 }

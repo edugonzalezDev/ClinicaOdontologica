@@ -179,3 +179,31 @@ INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?,?,?,?) [21002-224
 [2024-08-21 08:11:35] [ INFO ] [BD:32] datos cargados con exito
 [2024-08-21 08:11:50] [ INFO ] [OdontologoDAOH2:22] iniciando las operaciones de : guardado de: Juan
 [2024-08-21 08:11:50] [ INFO ] [OdontologoDAOH2:37] odontologo cargado : 3
+[2024-08-21 08:19:15] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 08:19:24] [ INFO ] [OdontologoDAOH2:22] iniciando las operaciones de : guardado de: Juan
+[2024-08-21 08:19:24] [ INFO ] [OdontologoDAOH2:37] odontologo cargado : 3
+[2024-08-21 18:30:10] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 19:27:21] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 19:28:14] [ INFO ] [OdontologoDAOH2:119] iniciando las operaciones de : busqueda  de un odontologo con ID: 2
+[2024-08-21 19:29:24] [ INFO ] [OdontologoDAOH2:119] iniciando las operaciones de : busqueda  de un odontologo con ID: 2
+[2024-08-21 19:29:25] [ INFO ] [OdontologoDAOH2:119] iniciando las operaciones de : busqueda  de un odontologo con ID: 2
+[2024-08-21 19:29:26] [ INFO ] [OdontologoDAOH2:119] iniciando las operaciones de : busqueda  de un odontologo con ID: 2
+[2024-08-21 19:30:04] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 19:30:27] [ INFO ] [OdontologoDAOH2:119] iniciando las operaciones de : busqueda  de un odontologo con ID: 2
+[2024-08-21 19:31:18] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 19:31:25] [ INFO ] [OdontologoDAOH2:51] iniciando las operaciones de : guardado de: Alfredo
+[2024-08-21 19:31:25] [ ERROR] [OdontologoDAOH2:64] problemas con la BDTabla "ODONTOLOGOSSET" no encontrada
+Table "ODONTOLOGOSSET" not found; SQL statement:
+UPDATE ODONTOLOGOSSET NOMBRE =?,    APELLIDO =?,    MATRICULA =?WHERE id = ?; [42102-224]
+[2024-08-21 19:32:00] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 19:32:04] [ INFO ] [OdontologoDAOH2:51] iniciando las operaciones de : guardado de: Alfredo
+[2024-08-21 19:32:04] [ INFO ] [OdontologoDAOH2:61] Odontologo actualizado
+[2024-08-21 19:32:52] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 19:32:55] [ INFO ] [OdontologoDAOH2:51] iniciando actualización del odontologo: Alfredo
+[2024-08-21 19:32:55] [ INFO ] [OdontologoDAOH2:61] Odontologo actualizado
+[2024-08-21 19:33:26] [ INFO ] [OdontologoDAOH2:119] iniciando las operaciones de : busqueda  de un odontologo con ID: 2
+[2024-08-21 19:46:59] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 19:47:04] [ INFO ] [OdontologoDAOH2:90] iniciando las operaciones de : listar todos los Odontologos
+[2024-08-21 19:47:14] [ INFO ] [OdontologoDAOH2:51] iniciando actualización del odontologo: Alfredo
+[2024-08-21 19:47:14] [ INFO ] [OdontologoDAOH2:61] Odontologo actualizado
+[2024-08-21 19:47:16] [ INFO ] [OdontologoDAOH2:90] iniciando las operaciones de : listar todos los Odontologos
