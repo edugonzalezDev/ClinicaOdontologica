@@ -14,7 +14,10 @@ public class OdontologoController {
     public OdontologoController() {
         odontologoService = new OdontologoService();
     }
-
+    @PostMapping
+    public Odontologo guardarOdontologo(@RequestBody Odontologo odontologo){
+        return odontologoService.guardarOdontologo(odontologo);
+    }
     @GetMapping("/buscar")
     public Odontologo buscarPorID(Model model, @RequestParam("id") Integer id) {
         return odontologoService.buscarPorID(id);

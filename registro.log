@@ -143,3 +143,36 @@ Database may be already in use: "C:/Users/Edu/ClinicaOdontologicaC2.mv.db". Poss
 [2024-08-20 23:16:47] [ INFO ] [BD:32] datos cargados con exito
 [2024-08-20 23:16:53] [ INFO ] [OdontologoDAOH2:60] iniciando las operaciones de eliminacion de odontologo:
 [2024-08-20 23:16:53] [ INFO ] [OdontologoDAOH2:71] Odontologo eliminado
+[2024-08-21 00:13:09] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 08:02:38] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 08:02:49] [ INFO ] [OdontologoDAOH2:22] iniciando las operaciones de : guardado de: Juan
+[2024-08-21 08:02:49] [ ERROR] [OdontologoDAOH2:39] problemas con la BDLa cantidad de columnas no coincide
+Column count does not match; SQL statement:
+INSERT INTO ODONTOLOGOS (NOMBRE, APELLIDO, MATRICULA) VALUES(?,?,?,?) [21002-224]
+[2024-08-21 08:06:07] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 08:07:20] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 08:07:49] [ INFO ] [OdontologoDAOH2:22] iniciando las operaciones de : guardado de: Juan
+[2024-08-21 08:07:49] [ ERROR] [OdontologoDAOH2:39] problemas con la BDLa cantidad de columnas no coincide
+Column count does not match; SQL statement:
+INSERT INTO ODONTOLOGOS (NOMBRE, APELLIDO, MATRICULA) VALUES(?,?,?,?) [21002-224]
+[2024-08-21 08:08:35] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 08:08:38] [ INFO ] [OdontologoDAOH2:22] iniciando las operaciones de : guardado de: Juan
+[2024-08-21 08:08:38] [ ERROR] [OdontologoDAOH2:39] problemas con la BDColumna "NUMEROMATRICULA" no encontrada
+Column "NUMEROMATRICULA" not found; SQL statement:
+INSERT INTO ODONTOLOGOS (NUMEROMATRICULA, NOMBRE, APELLIDO) VALUES(?,?,?,?) [42122-224]
+[2024-08-21 08:09:15] [ ERROR] [BD:34] error inesperado: Columna "NUMEROMATRICULA" no encontrada
+Column "NUMEROMATRICULA" not found; SQL statement:
+INSERT INTO ODONTOLOGOS (NUMEROMATRICULA, NOMBRE, APELLIDO) VALUES('100','Juanito','Espinoza'),('101','Alfredito','Contreras');  [42122-224]
+[2024-08-21 08:09:19] [ INFO ] [OdontologoDAOH2:22] iniciando las operaciones de : guardado de: Juan
+[2024-08-21 08:09:19] [ ERROR] [OdontologoDAOH2:39] problemas con la BDColumna "NUMEROMATRICULA" no encontrada
+Column "NUMEROMATRICULA" not found; SQL statement:
+INSERT INTO ODONTOLOGOS (NUMEROMATRICULA, NOMBRE, APELLIDO) VALUES(?,?,?,?) [42122-224]
+[2024-08-21 08:10:28] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 08:10:36] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 08:10:43] [ INFO ] [OdontologoDAOH2:22] iniciando las operaciones de : guardado de: Juan
+[2024-08-21 08:10:43] [ ERROR] [OdontologoDAOH2:39] problemas con la BDCannot invoke "java.lang.Integer.intValue()" because the return value of "com.example.ClinicaOdontologicaSpringMVC.Model.Odontologo.getMatricula()" is null
+[2024-08-21 08:11:02] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 08:11:07] [ INFO ] [OdontologoDAOH2:22] iniciando las operaciones de : guardado de: Juan
+[2024-08-21 08:11:07] [ ERROR] [OdontologoDAOH2:39] problemas con la BDLa cantidad de columnas no coincide
+Column count does not match; SQL statement:
+INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?,?,?,?) [21002-224]

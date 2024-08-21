@@ -13,7 +13,7 @@ import java.util.List;
 public class OdontologoDAOH2 implements iDao<Odontologo>{
 
     private static final Logger logger=Logger.getLogger(OdontologoDAOH2.class);
-    private static final String SQL_INSERT="INSERT INTO ODONTOLOGOS VALUES(?,?,?,?)";
+    private static final String SQL_INSERT="INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?,?,?)";
     private static final String SQL_SELECT_ONE="SELECT * FROM ODONTOLOGOS WHERE ID=?";
     private static final String SQL_SELECT="SELECT * FROM ODONTOLOGOS";
     private static final String SQL_DELETE_ODONTOLOGO= "DELETE FROM ODONTOLOGOS WHERE ID=?";
@@ -23,10 +23,9 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
         Connection connection=null;
         try {
             connection = BD.getConnection();
-            Statement statement = connection.createStatement();
             PreparedStatement psInsert = connection.prepareStatement(SQL_INSERT,Statement.RETURN_GENERATED_KEYS);
             //aca comunicamos mundo objeto con tabla
-            psInsert.setInt(1, odontologo.getNumeroMatricula());
+            psInsert.setInt(1, odontologo.getMatricula());
             psInsert.setString(2, odontologo.getNombre());
             psInsert.setString(3,odontologo.getApellido());
             psInsert.execute(); //aca se carga el ID del odontologo
@@ -35,7 +34,7 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
             while(rs.next()){
                 odontologo.setId(rs.getInt(1));
             }
-
+            logger.info("odontologo cargado : "+odontologo.getId());
         }catch (Exception e){
             logger.error("problemas con la BD"+e.getMessage());
         }
