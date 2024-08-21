@@ -23,4 +23,7 @@ public class OdontologoService {
     public List<Odontologo> verOdontologos(){
         return OdontologoiDao.listarTodos();
     }
+    public void eliminarOdontologo (Integer id) {
+        OdontologoiDao.eliminar(id);
+    }
 }

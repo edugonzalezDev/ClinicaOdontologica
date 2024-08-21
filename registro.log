@@ -99,3 +99,47 @@ INSERT INTO PACIENTES (NOMBRE, APELLIDO, CEDULA, FECHA_INGRESO, DOMICILIO_ID, EM
 [2024-08-20 21:13:40] [ INFO ] [DomicilioDAOH2:21] iniciando las operaciones de : guardado de un domicilio: null
 [2024-08-20 21:13:40] [ INFO ] [DomicilioDAOH2:35] domicilio persistido con exito
 [2024-08-20 21:13:40] [ INFO ] [PacienteDAOH2:41] paciente registrado: ID: 3 con domicilio asignado: 3
+[2024-08-20 21:32:47] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-20 21:33:13] [ INFO ] [PacienteDAOH2:19] iniciando las operaciones de : guardado de: Jose
+[2024-08-20 21:33:13] [ INFO ] [DomicilioDAOH2:21] iniciando las operaciones de : guardado de un domicilio: null
+[2024-08-20 21:33:13] [ INFO ] [DomicilioDAOH2:35] domicilio persistido con exito
+[2024-08-20 21:33:13] [ INFO ] [PacienteDAOH2:41] paciente registrado: ID: 3 con domicilio asignado: 3
+[2024-08-20 22:07:06] [ INFO ] [OdontologoDAOH2:101] iniciando las operaciones de : busqueda  de un odontologo con ID: 1
+[2024-08-20 22:07:24] [ INFO ] [OdontologoDAOH2:101] iniciando las operaciones de : busqueda  de un odontologo con ID: 1
+[2024-08-20 22:08:31] [ INFO ] [OdontologoDAOH2:101] iniciando las operaciones de : busqueda  de un odontologo con ID: 1
+[2024-08-20 22:08:49] [ INFO ] [OdontologoDAOH2:101] iniciando las operaciones de : busqueda  de un odontologo con ID: 2
+[2024-08-20 22:35:59] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-20 22:36:08] [ INFO ] [OdontologoDAOH2:101] iniciando las operaciones de : busqueda  de un odontologo con ID: 2
+[2024-08-20 22:36:40] [ INFO ] [OdontologoDAOH2:101] iniciando las operaciones de : busqueda  de un odontologo con ID: 1
+[2024-08-20 22:37:46] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-20 22:37:53] [ INFO ] [OdontologoDAOH2:101] iniciando las operaciones de : busqueda  de un odontologo con ID: 1
+[2024-08-20 22:38:00] [ INFO ] [OdontologoDAOH2:101] iniciando las operaciones de : busqueda  de un odontologo con ID: 2
+[2024-08-20 22:57:18] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-20 22:58:24] [ INFO ] [OdontologoDAOH2:60] iniciando las operaciones de eliminacion de odontologo:
+[2024-08-20 22:58:24] [ ERROR] [OdontologoDAOH2:68] problemas con la BDError de Sintaxis en sentencia SQL "DELETE [*]* FROM ODONTOLOGOS WHERE ID=?"; se esperaba "identifier"
+Syntax error in SQL statement "DELETE [*]* FROM ODONTOLOGOS WHERE ID=?"; expected "identifier"; SQL statement:
+DELETE * FROM ODONTOLOGOS WHERE ID=? [42001-224]
+[2024-08-20 23:07:19] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-20 23:07:24] [ INFO ] [OdontologoDAOH2:60] iniciando las operaciones de eliminacion de odontologo:
+[2024-08-20 23:07:24] [ ERROR] [OdontologoDAOH2:71] problemas con la BDError de Sintaxis en sentencia SQL "DELETE [*]* FROM ODONTOLOGOS WHERE ID=?"; se esperaba "identifier"
+Syntax error in SQL statement "DELETE [*]* FROM ODONTOLOGOS WHERE ID=?"; expected "identifier"; SQL statement:
+DELETE * FROM ODONTOLOGOS WHERE ID=? [42001-224]
+[2024-08-20 23:09:35] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-20 23:10:00] [ INFO ] [OdontologoDAOH2:60] iniciando las operaciones de eliminacion de odontologo:
+[2024-08-20 23:10:00] [ ERROR] [OdontologoDAOH2:73] problemas con la BDError de Sintaxis en sentencia SQL "DELETE [*]* FROM ODONTOLOGOS WHERE ID=?"; se esperaba "identifier"
+Syntax error in SQL statement "DELETE [*]* FROM ODONTOLOGOS WHERE ID=?"; expected "identifier"; SQL statement:
+DELETE * FROM ODONTOLOGOS WHERE ID=? [42001-224]
+[2024-08-20 23:12:14] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-20 23:12:18] [ INFO ] [OdontologoDAOH2:60] iniciando las operaciones de eliminacion de odontologo:
+[2024-08-20 23:12:18] [ ERROR] [OdontologoDAOH2:73] problemas con la BDMetodo permitido unicamente en un query. Use execute ó executeUpdate en lugar de executeQuery
+Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE FROM ODONTOLOGOS WHERE ID=? [90002-224]
+[2024-08-20 23:13:04] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-20 23:13:09] [ INFO ] [OdontologoDAOH2:60] iniciando las operaciones de eliminacion de odontologo:
+[2024-08-20 23:13:09] [ INFO ] [OdontologoDAOH2:71] Odontologo eliminado
+[2024-08-20 23:15:36] [ ERROR] [BD:34] error inesperado: La base de datos puede que ya esté siendo utilizada: "C:/Users/Edu/ClinicaOdontologicaC2.mv.db". Soluciones Posibles: cierre todas las otras conexiones; use el modo server
+Database may be already in use: "C:/Users/Edu/ClinicaOdontologicaC2.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-224]
+[2024-08-20 23:16:04] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-20 23:16:47] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-20 23:16:53] [ INFO ] [OdontologoDAOH2:60] iniciando las operaciones de eliminacion de odontologo:
+[2024-08-20 23:16:53] [ INFO ] [OdontologoDAOH2:71] Odontologo eliminado

@@ -16,6 +16,7 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
     private static final String SQL_INSERT="INSERT INTO ODONTOLOGOS VALUES(?,?,?,?)";
     private static final String SQL_SELECT_ONE="SELECT * FROM ODONTOLOGOS WHERE ID=?";
     private static final String SQL_SELECT="SELECT * FROM ODONTOLOGOS";
+    private static final String SQL_DELETE_ODONTOLOGO= "DELETE FROM ODONTOLOGOS WHERE ID=?";
     @Override
     public Odontologo guardar(Odontologo odontologo) {
         logger.info("iniciando las operaciones de : guardado de: "+odontologo.getNombre());
@@ -56,11 +57,18 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
 
     @Override
     public void eliminar(Integer id) {
-        logger.info("iniciando las operaciones de :");
+        logger.info("iniciando las operaciones de eliminacion de odontologo:");
         Connection connection=null;
         try{
             connection=BD.getConnection();
+            Statement statement = connection.createStatement();
+            PreparedStatement psDelete= connection.prepareStatement(SQL_DELETE_ODONTOLOGO);
+            psDelete.setInt(1, id);
+            psDelete.execute();
 
+//            ResultSet rs= psDelete.executeQuery();
+
+            logger.info("Odontologo eliminado");
         }catch (Exception e){
             logger.error("problemas con la BD"+e.getMessage());
         }

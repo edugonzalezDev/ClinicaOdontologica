@@ -4,11 +4,9 @@ import com.example.ClinicaOdontologicaSpringMVC.Model.Odontologo;
 import com.example.ClinicaOdontologicaSpringMVC.Service.OdontologoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/odontologo")
 public class OdontologoController {
     private OdontologoService odontologoService;
@@ -18,11 +16,11 @@ public class OdontologoController {
     }
 
     @GetMapping("/buscar")
-    public String buscarPorID(Model model, @RequestParam("id") Integer id) {
-        Odontologo odontologo = odontologoService.buscarPorID(id);
-        model.addAttribute("nombre", odontologo.getNombre());
-        model.addAttribute("apellido", odontologo.getApellido());
-
-        return "index";
+    public Odontologo buscarPorID(Model model, @RequestParam("id") Integer id) {
+        return odontologoService.buscarPorID(id);
+    }
+    @DeleteMapping("/eliminar/{id}")
+    public void eliminarOdontologo (@PathVariable Integer id) {
+        odontologoService.eliminarOdontologo(id);
     }
 }
