@@ -176,3 +176,6 @@ INSERT INTO ODONTOLOGOS (NUMEROMATRICULA, NOMBRE, APELLIDO) VALUES(?,?,?,?) [421
 [2024-08-21 08:11:07] [ ERROR] [OdontologoDAOH2:39] problemas con la BDLa cantidad de columnas no coincide
 Column count does not match; SQL statement:
 INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?,?,?,?) [21002-224]
+[2024-08-21 08:11:35] [ INFO ] [BD:32] datos cargados con exito
+[2024-08-21 08:11:50] [ INFO ] [OdontologoDAOH2:22] iniciando las operaciones de : guardado de: Juan
+[2024-08-21 08:11:50] [ INFO ] [OdontologoDAOH2:37] odontologo cargado : 3
