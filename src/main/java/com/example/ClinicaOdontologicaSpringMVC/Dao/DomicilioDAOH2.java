@@ -13,6 +13,7 @@ public class DomicilioDAOH2 implements iDao<Domicilio>{
     private static final Logger logger= Logger.getLogger(DomicilioDAOH2.class);
     private static final String SQL_INSERT="INSERT INTO DOMICILIOS (CALLE, NUMERO,LOCALIDAD, PROVINCIA) VALUES(?,?,?,?)";
     private static final String SQL_SELECT_ONE="SELECT * FROM DOMICILIOS WHERE ID=?";
+    private static final String SQL_DELETE_DOMICILIO= "DELETE FROM DOMICILIOS WHERE ID=?";
 
 
 
@@ -47,6 +48,19 @@ public class DomicilioDAOH2 implements iDao<Domicilio>{
 
     @Override
     public void eliminar(Integer id) {
+        logger.info("iniciando las operaciones de eliminacion del domicilio con ID: "+id);
+        Connection connection=null;
+        try{
+            connection=BD.getConnection();
+            PreparedStatement psDelete = connection.prepareStatement(SQL_DELETE_DOMICILIO);
+            psDelete.setInt(1, id);
+            psDelete.execute();
+
+            logger.info("Domicilio eliminado");
+
+        }catch (Exception e){
+            logger.error("problemas con la BD "+e.getMessage());
+        }
 
     }
 
