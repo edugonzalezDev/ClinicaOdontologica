@@ -13,15 +13,13 @@ import java.util.List;
 public class OdontologoDAOH2 implements iDao<Odontologo>{
 
     private static final Logger logger=Logger.getLogger(OdontologoDAOH2.class);
+
     private static final String SQL_INSERT="INSERT INTO ODONTOLOGOS (MATRICULA, NOMBRE, APELLIDO) VALUES(?,?,?)";
     private static final String SQL_SELECT_ONE="SELECT * FROM ODONTOLOGOS WHERE ID=?";
     private static final String SQL_SELECT="SELECT * FROM ODONTOLOGOS";
     private static final String SQL_DELETE_ODONTOLOGO= "DELETE FROM ODONTOLOGOS WHERE ID=?";
-    private static final String SQL_UPDATE_ODONTOLOGO= "UPDATE ODONTOLOGOS" +
-            " SET NOMBRE =?," +
-            "    APELLIDO =?," +
-            "    MATRICULA =?" +
-            "WHERE id = ?;";
+    private static final String SQL_UPDATE_ODONTOLOGO= "UPDATE ODONTOLOGOS SET NOMBRE =?, APELLIDO =?, MATRICULA =? WHERE id = ?;";
+
     @Override
     public Odontologo guardar(Odontologo odontologo) {
         logger.info("iniciando las operaciones de : guardado de: "+odontologo.getNombre());
@@ -58,10 +56,23 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
             psUpdate.setInt(3,odontologo.getMatricula());
             psUpdate.setInt(4, odontologo.getId());
             psUpdate.execute();
-            logger.info("Odontologo actualizado");
+
+            PreparedStatement psUpdate2=connection.prepareStatement(SQL_SELECT_ONE);
+            psUpdate2.setInt(1,odontologo.getId());
+            psUpdate2.execute();
+            ResultSet rs= psUpdate2.executeQuery();
+            while (rs.next()){
+                logger.info("***************************");
+                logger.info("Odontologo actualizado");
+                logger.info("---------------------------");
+                logger.info("Nombre: "+ rs.getString("NOMBRE"));
+                logger.info("Apellido: "+ rs.getString("APELLIDO"));
+                logger.info("Matrícula: "+ rs.getInt("MATRICULA"));
+                logger.info("***************************");
+            }
 
         }catch (Exception e){
-            logger.error("problemas con la BD"+e.getMessage());
+            logger.error("problemas con la BD: "+e.getMessage());
         }
 
     }
@@ -121,7 +132,6 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
         Odontologo odontologo=null;
         try{
             connection=BD.getConnection();
-            Statement statement= connection.createStatement();
             PreparedStatement psUpdate=connection.prepareStatement(SQL_SELECT_ONE);
             psUpdate.setInt(1,id);
             psUpdate.execute();
