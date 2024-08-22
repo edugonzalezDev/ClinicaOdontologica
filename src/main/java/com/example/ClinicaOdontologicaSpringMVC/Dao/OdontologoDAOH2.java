@@ -1,6 +1,7 @@
 package com.example.ClinicaOdontologicaSpringMVC.Dao;
 
 import com.example.ClinicaOdontologicaSpringMVC.Model.Odontologo;
+import com.example.ClinicaOdontologicaSpringMVC.Service.OdontologoService;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -46,8 +47,12 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
 
     @Override
     public void actualizar(Odontologo odontologo) {
-        logger.info("iniciando actualización del odontologo: "+odontologo.getNombre());
         Connection connection=null;
+        OdontologoService odontologoService = new OdontologoService();
+        Odontologo odontologoActual = odontologoService.buscarPorID(odontologo.getId());
+
+        logger.info("iniciando actualización del odontologo: "+odontologoActual.getNombre());
+
         try{
             connection=BD.getConnection();
             PreparedStatement psUpdate = connection.prepareStatement(SQL_UPDATE_ODONTOLOGO);
@@ -57,19 +62,29 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
             psUpdate.setInt(4, odontologo.getId());
             psUpdate.execute();
 
-            PreparedStatement psUpdate2=connection.prepareStatement(SQL_SELECT_ONE);
-            psUpdate2.setInt(1,odontologo.getId());
-            psUpdate2.execute();
-            ResultSet rs= psUpdate2.executeQuery();
-            while (rs.next()){
-                logger.info("***************************");
-                logger.info("Odontologo actualizado");
-                logger.info("---------------------------");
-                logger.info("Nombre: "+ rs.getString("NOMBRE"));
-                logger.info("Apellido: "+ rs.getString("APELLIDO"));
-                logger.info("Matrícula: "+ rs.getInt("MATRICULA"));
-                logger.info("***************************");
-            }
+            Odontologo odontologoActualizado = odontologoService.buscarPorID(odontologo.getId());
+            logger.info("***************************");
+            logger.info("Odontologo actualizado");
+            logger.info("---------------------------");
+            logger.info("Nombre: "+ odontologoActualizado.getNombre());
+            logger.info("Apellido: "+ odontologoActualizado.getApellido());
+            logger.info("Matrícula: "+ odontologoActualizado.getNombre());
+            logger.info("***************************");
+
+//
+//            PreparedStatement psUpdate2=connection.prepareStatement(SQL_SELECT_ONE);
+//            psUpdate2.setInt(1,odontologo.getId());
+//            psUpdate2.execute();
+//            ResultSet rs= psUpdate2.executeQuery();
+//            while (rs.next()){
+//                logger.info("***************************");
+//                logger.info("Odontologo actualizado");
+//                logger.info("---------------------------");
+//                logger.info("Nombre: "+ rs.getString("NOMBRE"));
+//                logger.info("Apellido: "+ rs.getString("APELLIDO"));
+//                logger.info("Matrícula: "+ rs.getInt("MATRICULA"));
+//                logger.info("***************************");
+//            }
 
         }catch (Exception e){
             logger.error("problemas con la BD: "+e.getMessage());
@@ -150,6 +165,5 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
     public Odontologo buscarPorString(String string) {
         return null;
     }
-
 
 }
