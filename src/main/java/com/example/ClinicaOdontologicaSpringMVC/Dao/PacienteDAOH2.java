@@ -63,12 +63,18 @@ public class PacienteDAOH2 implements iDao<Paciente>{
     public void eliminar(Integer id) {
         logger.info("iniciando las operaciones de eliminacion de paciente: "+id);
         Connection connection=null;
-        DomicilioDAOH2 domilio = new DomicilioDAOH2();
+        DomicilioDAOH2 domicilio = new DomicilioDAOH2();
+        PacienteDAOH2 paciente = new PacienteDAOH2();
+        Integer domicilioId = paciente.buscarporId(id).getDomicilio().getId();
         try{
             connection=BD.getConnection();
             PreparedStatement psDelete = connection.prepareStatement(SQL_DELETE_ONE);
             psDelete.setInt(1, id);
             psDelete.execute();
+            logger.info("Paciente con id "+id+" borrado con exito");
+            logger.info("domicilio encontrado");
+            domicilio.eliminar(domicilioId);
+            logger.info("Domicilio con id "+domicilioId+" borrado con exito");
 
         }catch (Exception e){
             logger.error("problemas con la BD"+e.getMessage());

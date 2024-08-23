@@ -25,4 +25,7 @@ public class PacienteService {
     public Paciente actualizarPaciente (Paciente paciente) {
         pacienteiDao.actualizar(paciente);
         return null; }
+    public void eliminarPaciente (Integer id){
+        pacienteiDao.eliminar(id);
+    }
 }

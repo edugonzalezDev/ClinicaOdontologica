@@ -25,6 +25,10 @@ public class PacienteController {
     public Paciente guardarPaciente(@RequestBody Paciente paciente){
         return pacienteService.guardarPaciente(paciente);
     }
+    @DeleteMapping("/eliminar")
+    public void eliminarPaciente(@RequestParam Integer id){
+        pacienteService.eliminarPaciente(id);
+    }
 //    @PutMapping
 //    public Paciente actualizar (@RequestBody Paciente paciente){
 //        return pacienteService.ac
