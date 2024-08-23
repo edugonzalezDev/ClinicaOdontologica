@@ -71,21 +71,6 @@ public class OdontologoDAOH2 implements iDao<Odontologo>{
             logger.info("Matrícula: "+ odontologoActualizado.getNombre());
             logger.info("***************************");
 
-//
-//            PreparedStatement psUpdate2=connection.prepareStatement(SQL_SELECT_ONE);
-//            psUpdate2.setInt(1,odontologo.getId());
-//            psUpdate2.execute();
-//            ResultSet rs= psUpdate2.executeQuery();
-//            while (rs.next()){
-//                logger.info("***************************");
-//                logger.info("Odontologo actualizado");
-//                logger.info("---------------------------");
-//                logger.info("Nombre: "+ rs.getString("NOMBRE"));
-//                logger.info("Apellido: "+ rs.getString("APELLIDO"));
-//                logger.info("Matrícula: "+ rs.getInt("MATRICULA"));
-//                logger.info("***************************");
-//            }
-
         }catch (Exception e){
             logger.error("problemas con la BD: "+e.getMessage());
         }
