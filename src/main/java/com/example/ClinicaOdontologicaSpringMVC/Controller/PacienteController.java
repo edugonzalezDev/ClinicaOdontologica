@@ -21,6 +21,11 @@ public class PacienteController {
 
         return "index";
     }
+    @GetMapping("/buscar/{id}")
+    public Paciente buscarPorId (@PathVariable Integer id) {
+        Paciente paciente = pacienteService.buscarPorID(id);
+        return paciente;
+    }
     @PostMapping
     public Paciente guardarPaciente(@RequestBody Paciente paciente){
         return pacienteService.guardarPaciente(paciente);
