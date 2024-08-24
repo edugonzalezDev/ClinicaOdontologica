@@ -65,7 +65,7 @@ public class PacienteDAOH2 implements iDao<Paciente>{
         Connection connection=null;
         DomicilioDAOH2 domicilio = new DomicilioDAOH2();
         PacienteDAOH2 paciente = new PacienteDAOH2();
-        Integer domicilioId = paciente.buscarporId(id).getDomicilio().getId();
+        Integer domicilioId = paciente.buscarPorId(id).getDomicilio().getId();
         try{
             connection=BD.getConnection();
             PreparedStatement psDelete = connection.prepareStatement(SQL_DELETE_ONE);
@@ -96,20 +96,19 @@ public class PacienteDAOH2 implements iDao<Paciente>{
     }
 
     @Override
-    public Paciente buscarporId(Integer id) {
+    public Paciente buscarPorId(Integer id) {
         logger.info("iniciando las operaciones de : busqueda  de un paciente: "+id);
         Connection connection=null;
         Paciente paciente=null;
         Domicilio domicilio= null;
         try{
             connection=BD.getConnection();
-            Statement statement= connection.createStatement();
             PreparedStatement psUpdate=connection.prepareStatement(SQL_SELECT_ONE);
             psUpdate.setInt(1,id);
             ResultSet rs= psUpdate.executeQuery();
             DomicilioDAOH2 daoAux= new DomicilioDAOH2();
             while (rs.next()){
-                domicilio= daoAux.buscarporId(rs.getInt(6)); //--< FK
+                domicilio= daoAux.buscarPorId(rs.getInt(6)); //--< FK
                 paciente= new Paciente(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),rs.getDate(5).toLocalDate(),domicilio,rs.getString(7));
             }
 
@@ -132,7 +131,7 @@ public class PacienteDAOH2 implements iDao<Paciente>{
             psSelectEmail.setString(1,string);
             ResultSet rs= psSelectEmail.executeQuery();
             while(rs.next()){
-                domicilio= daoAux.buscarporId(rs.getInt(6)); //--< FK
+                domicilio= daoAux.buscarPorId(rs.getInt(6)); //--< FK
                 paciente= new Paciente(rs.getInt(1),rs.getString(2),rs.getString(3), rs.getString(4),rs.getDate(5).toLocalDate(),domicilio,rs.getString(7));
                             }
 

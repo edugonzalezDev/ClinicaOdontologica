@@ -26,8 +26,8 @@ public class TurnoController {
 
     @PostMapping
     public ResponseEntity<Turno> registrarTurno(@RequestBody Turno turno){
-        Paciente pacienteBuscado = pacienteService.buscarPorID(turno.getPaciente().getId());
-        Odontologo odontologoBuscado = odontologoService.buscarPorID(turno.getOdontologo().getId());
+        Paciente pacienteBuscado = pacienteService.buscarPorId(turno.getPaciente().getId());
+        Odontologo odontologoBuscado = odontologoService.buscarPorId(turno.getOdontologo().getId());
 
         if (pacienteBuscado!=null&&odontologoBuscado!=null) {
             return ResponseEntity.ok(turnoService.guardarTurno(turno));

@@ -8,6 +8,6 @@ public interface iDao<T> {
    void actualizar(T t);
    void eliminar(Integer id);
    List<T> listarTodos();
-   T buscarporId(Integer id);
+   T buscarPorId(Integer id);
    T buscarPorString(String string);
 }

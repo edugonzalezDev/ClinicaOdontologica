@@ -23,7 +23,7 @@ public class PacienteController {
     }
     @GetMapping("/buscar/{id}")
     public Paciente buscarPorId (@PathVariable Integer id) {
-        Paciente paciente = pacienteService.buscarPorID(id);
+        Paciente paciente = pacienteService.buscarPorId(id);
         return paciente;
     }
     @PostMapping
