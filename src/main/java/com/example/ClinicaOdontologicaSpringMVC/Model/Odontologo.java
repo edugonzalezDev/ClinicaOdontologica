@@ -13,7 +13,7 @@ import lombok.Setter;
 public class Odontologo {
     //atributos de la clase paciente
     private Integer id;
-    private Integer matricula;
+    private String matricula;
     private String nombre;
     private String apellido;
 

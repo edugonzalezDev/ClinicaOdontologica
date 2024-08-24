@@ -16,10 +16,12 @@ public class OdontologoService {
     public Odontologo guardarOdontologo(Odontologo odontologo){
         return OdontologoiDao.guardar(odontologo);
     }
-    public Odontologo buscarPorID(Integer id){
-        return OdontologoiDao.buscarporId(id);
+    public Odontologo buscarPorId(Integer id){
+        return OdontologoiDao.buscarPorId(id);
     }
-
+    public Odontologo buscarPorMatricula(String matricula){
+     return OdontologoiDao.buscarPorString(matricula);
+    }
     public List<Odontologo> listarOdontologos(){
         return OdontologoiDao.listarTodos();
     }

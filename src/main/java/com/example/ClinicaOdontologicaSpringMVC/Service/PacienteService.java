@@ -16,8 +16,8 @@ public class PacienteService {
     public Paciente guardarPaciente(Paciente paciente){
         return pacienteiDao.guardar(paciente);
     }
-    public Paciente buscarPorID(Integer id){
-        return pacienteiDao.buscarporId(id);
+    public Paciente buscarPorId(Integer id){
+        return pacienteiDao.buscarPorId(id);
     }
     public Paciente buscarPorCorreo(String correo){
         return pacienteiDao.buscarPorString(correo);

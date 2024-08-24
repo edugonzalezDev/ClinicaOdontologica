@@ -70,7 +70,7 @@ public class DomicilioDAOH2 implements iDao<Domicilio>{
     }
 
     @Override
-    public Domicilio buscarporId(Integer id) {
+    public Domicilio buscarPorId(Integer id) {
         logger.info("iniciando las operaciones de : busqueda de un domicilio con ID: "+id);
         Connection connection=null;
         Domicilio domicilio=null;
