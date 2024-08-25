@@ -14,12 +14,8 @@ public class PacienteController {
         pacienteService= new PacienteService();
     }
     @GetMapping("/buscar")
-    public String buscarPorCorreo(Model model, @RequestParam("email") String email)  {
-        Paciente paciente= pacienteService.buscarPorCorreo(email);
-        model.addAttribute("nombre",paciente.getNombre());
-        model.addAttribute("apellido",paciente.getApellido());
-
-        return "index";
+    public Paciente buscarPorCorreo(@RequestParam("email") String email)  {
+        return pacienteService.buscarPorCorreo(email);
     }
     @GetMapping("/buscar/{id}")
     public Paciente buscarPorId (@PathVariable Integer id) {
