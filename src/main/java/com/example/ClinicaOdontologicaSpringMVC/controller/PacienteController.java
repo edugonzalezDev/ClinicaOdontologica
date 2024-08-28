@@ -1,25 +1,28 @@
-package com.example.ClinicaOdontologicaSpringMVC.Controller;
+package com.example.ClinicaOdontologicaSpringMVC.controller;
 
-import com.example.ClinicaOdontologicaSpringMVC.Model.Paciente;
-import com.example.ClinicaOdontologicaSpringMVC.Service.PacienteService;
-import org.springframework.ui.Model;
+import com.example.ClinicaOdontologicaSpringMVC.entity.Paciente;
+import com.example.ClinicaOdontologicaSpringMVC.service.PacienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/paciente")
 public class PacienteController {
+    @Autowired
     private PacienteService pacienteService;
 
     public PacienteController() {
         pacienteService= new PacienteService();
     }
     @GetMapping("/buscar")
-    public Paciente buscarPorCorreo(@RequestParam("email") String email)  {
+    public Optional<Paciente> buscarPorCorreo(@RequestParam("email") String email)  {
         return pacienteService.buscarPorCorreo(email);
     }
     @GetMapping("/buscar/{id}")
-    public Paciente buscarPorId (@PathVariable Integer id) {
-        Paciente paciente = pacienteService.buscarPorId(id);
+    public   Optional<Paciente> buscarPorId (@PathVariable Integer id) {
+        Optional<Paciente> paciente = pacienteService.buscarPorId(id);
         return paciente;
     }
     @PostMapping
