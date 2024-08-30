@@ -2,7 +2,7 @@ window.addEventListener('load', function () {
 
     //Al cargar la pagina buscamos y obtenemos el formulario donde estarán
     //los datos que el usuario cargará de la nueva pelicula
-    const formulario = document.querySelector('#add_new_odontologo');
+    const formulario = document.querySelector('#add_new_paciente');
 
     //Ante un submit del formulario se ejecutará la siguiente funcion
     formulario.addEventListener('submit', function (event) {
@@ -11,12 +11,19 @@ window.addEventListener('load', function () {
         const formData = {
             nombre: document.querySelector('#nombre').value,
             apellido: document.querySelector('#apellido').value,
-            matricula: document.querySelector('#matricula').value,
-
+            cedula: document.querySelector('#cedula').value,
+            fechaIngreso: "2024-08-20",
+            domicilio: {
+                calle: document.querySelector('#calle').value,
+                numero: document.querySelector('#numero').value,
+                localidad: document.querySelector('#localidad').value,
+                provincia: document.querySelector('#provincia').value,
+            },
+            correo: document.querySelector('#correo').value,
         };
-        //invocamos utilizando la función fetch la API peliculas con el método POST que guardará
-        //la película que enviaremos en formato JSON
-        const url = '/odontologo';
+        //invocamos utilizando la función fetch la API clinicaOdontologica con el método POST que guardará
+        //el paciente que enviaremos en formato JSON
+        const url = '/paciente';
         const settings = {
             method: 'POST',
             headers: {
@@ -32,7 +39,7 @@ window.addEventListener('load', function () {
                  //se agrego bien
                  let successAlert = '<div class="alert alert-success alert-dismissible">' +
                      '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                     '<strong></strong> Odontologo agregado </div>'
+                     '<strong></strong> Paciente agregado </div>'
 
                  document.querySelector('#response').innerHTML = successAlert;
                  document.querySelector('#response').style.display = "block";
@@ -56,7 +63,13 @@ window.addEventListener('load', function () {
     function resetUploadForm(){
         document.querySelector('#nombre').value = "";
         document.querySelector('#apellido').value = "";
-         document.querySelector('#matricula').value = "";
+        document.querySelector('#cedula').value = "";
+        document.querySelector('#fechaIngreso').value = "";
+        document.querySelector('#calle').value = "";
+        document.querySelector('#numero').value = "";
+        document.querySelector('#localidad').value = "";
+        document.querySelector('#provincia').value = "";
+        document.querySelector('#correo').value = "";
 
     }
 
