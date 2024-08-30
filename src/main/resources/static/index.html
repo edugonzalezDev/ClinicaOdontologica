@@ -1,88 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Odontológica</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
-<body>
-
-<nav class="navbar bg-body-tertiary fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Offcanvas navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Odontologos
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="post_odontologos.html">Guardar</a></li>
-                            <li><a class="dropdown-item" href="#">Actualizar</a></li>
-                            <li><a class="dropdown-item" href="get_odontologos.html">Listar</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><form class="d-flex mt-3" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Ingrese la matrícula" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Buscar</button>
-                            </form></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Pacientes
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Guardar</a></li>
-                            <li><a class="dropdown-item" href="#">Actualizar</a></li>
-                            <li><a class="dropdown-item" href="#">Listar</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <form class="d-flex mt-3" role="search">
-                                    <input class="form-control me-2" type="search" placeholder="Ingresar E-mail" aria-label="Search">
-                                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Turnos
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Agendar</a></li>
-                            <li><a class="dropdown-item" href="#">Actualizar</a></li>
-                            <li><a class="dropdown-item" href="#">Listar</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <form class="d-flex mt-3" role="search">
-                                    <input class="form-control me-2" type="search" placeholder="Ingresar E-mail" aria-label="Search">
-                                    <button class="btn btn-outline-success" type="submit">Buscar</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<body class="bg-dark text-light">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Clínica Odontológica</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#pacientes">Pacientes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#odontologos">Odontólogos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#citas">Agendar Citas</a>
+            </li>
+        </ul>
     </div>
 </nav>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<!-- Login Section -->
+<section id="login" class="container my-5">
+    <h2 class="text-center">Inicio de Sesión</h2>
+    <form>
+        <div class="form-group">
+            <label for="username">Usuario</label>
+            <input type="text" class="form-control" id="username" placeholder="Introduce tu usuario">
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Introduce tu contraseña">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+    </form>
+</section>
+
+<!-- Pacientes Section -->
+<section id="pacientes" class="container my-5">
+    <h2 class="text-center">Gestión de Pacientes</h2>
+    <div class="text-center my-3">
+        <button class="btn btn-success">Agregar Paciente</button>
+        <button class="btn btn-warning">Actualizar Paciente</button>
+        <button class="btn btn-danger">Eliminar Paciente</button>
+    </div>
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">Paciente 1</a>
+        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">Paciente 2</a>
+        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">Paciente 3</a>
+    </div>
+</section>
+
+<!-- Odontólogos Section -->
+<section id="odontologos" class="container my-5">
+    <h2 class="text-center">Gestión de Odontólogos</h2>
+    <div class="text-center my-3">
+        <button class="btn btn-success">Agregar Odontólogo</button>
+        <button class="btn btn-warning">Actualizar Odontólogo</button>
+        <button class="btn btn-danger">Eliminar Odontólogo</button>
+    </div>
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">Odontólogo 1</a>
+        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">Odontólogo 2</a>
+        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">Odontólogo 3</a>
+    </div>
+</section>
+
+<!-- Agendar Citas Section -->
+<section id="citas" class="container my-5">
+    <h2 class="text-center">Agendar Cita</h2>
+    <form>
+        <div class="form-group">
+            <label for="select-paciente">Seleccionar Paciente</label>
+            <select class="form-control" id="select-paciente">
+                <option>Paciente 1</option>
+                <option>Paciente 2</option>
+                <option>Paciente 3</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="select-odontologo">Seleccionar Odontólogo</label>
+            <select class="form-control" id="select-odontologo">
+                <option>Odontólogo 1</option>
+                <option>Odontólogo 2</option>
+                <option>Odontólogo 3</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="fecha">Fecha</label>
+            <input type="date" class="form-control" id="fecha">
+        </div>
+        <div class="form-group">
+            <label for="hora">Hora</label>
+            <input type="time" class="form-control" id="hora">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Agendar Cita</button>
+    </form>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
