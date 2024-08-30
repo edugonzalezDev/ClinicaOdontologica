@@ -22,8 +22,8 @@ public class PacienteService {
         return pacienteRepository.findByCorreo(correo);
     }
     public Paciente actualizarPaciente (Paciente paciente) {
-        pacienteRepository.save(paciente);
-        return null; }
+        return pacienteRepository.save(paciente);
+    }
     public void eliminarPaciente (Integer id){
         pacienteRepository.deleteById(id);
     }
