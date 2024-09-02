@@ -44,3 +44,17 @@ h2 {
 .bg-secondary {
     background-color: #444 !important;
 }
+
+.action-column {
+    width: 1%;
+    white-space: nowrap;
+    text-align: center;
+}
+form.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+.btn {
+    display: inline-block;
+    margin: auto;
+}
