@@ -1,10 +1,12 @@
 package com.example.ClinicaOdontologicaSpringMVC.service;
 
+import com.example.ClinicaOdontologicaSpringMVC.entity.Odontologo;
 import com.example.ClinicaOdontologicaSpringMVC.repository.PacienteRepository;
 import com.example.ClinicaOdontologicaSpringMVC.entity.Paciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +22,9 @@ public class PacienteService {
     }
     public Optional<Paciente> buscarPorCorreo(String correo){
         return pacienteRepository.findByCorreo(correo);
+    }
+    public List<Paciente> listarOdontologos(){
+        return pacienteRepository.findAll();
     }
     public Paciente actualizarPaciente (Paciente paciente) {
         return pacienteRepository.save(paciente);

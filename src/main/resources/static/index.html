@@ -9,6 +9,8 @@
     <script type="text/javascript" src="./js/post_paciente.js"></script>
     <script type="text/javascript" src="./js/post_odontologo.js"></script>
     <script type="text/javascript" src="./js/get_odontologos.js"></script>
+    <script type="text/javascript" src="./js/update_odontologo.js"></script>
+    <script type="text/javascript" src="./js/get_pacientes.js"></script>
     <script type="text/javascript" src="./js/delete_odontologo.js"></script>
 </head>
 <body class="bg-dark text-light">
@@ -101,19 +103,24 @@
         <button type="submit" class="btn btn-success btn-block">Registrar Paciente</button>
     </form>
 
-    <!-- Opciones para Gestionar Pacientes Existentes -->
-    <div class="text-center my-3">
-        <button class="btn btn-warning">Actualizar Paciente</button>
-        <button class="btn btn-danger">Eliminar Paciente</button>
-    </div>
-
     <!-- Lista de Pacientes -->
-    <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">Paciente 1</a>
-        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">Paciente 2</a>
-        <a href="#" class="list-group-item list-group-item-action bg-secondary text-light">Paciente 3</a>
-    </div>
-</section>
+    <div class="bg-secondary p-4 my-4 rounded">
+        <table id="pacienteTable" class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Email</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
+            </tr>
+            </thead>
+            <tbody id="pacienteTableBody">
+
+            </tbody>
+        </table>
+    </div></section>
 
 <!-- Odontologos Section -->
 <section id="odontologos" class="container my-5">

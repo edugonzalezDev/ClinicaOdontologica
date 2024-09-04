@@ -28,7 +28,7 @@ public class TurnoController {
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPorId(turno.getPaciente().getId());
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorId(turno.getOdontologo().getId());
 
-        if (pacienteBuscado!=null&&odontologoBuscado!=null) {
+        if (pacienteBuscado.isPresent()&&odontologoBuscado.isPresent()) {
             return ResponseEntity.ok(turnoService.guardarTurno(turno));
 
         }else{
