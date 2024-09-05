@@ -1,6 +1,6 @@
 function editar(id) {
 
-        var row = document.getElementById('tr_odontologo_' + id); // Selecciona la fila por su ID, que tiene el formato 'tr_' seguido por el número de ID
+        var row = document.getElementById('tr_odontologo_' + id); // Selecciona la fila por su ID
         var cells = row.getElementsByTagName('td'); // Obtiene todas las celdas de la fila seleccionada
 
         // Itera sobre las celdas y convierte su contenido a un campo de entrada para editar
@@ -8,10 +8,9 @@ function editar(id) {
             var cellContent = cells[i].innerText;
             cells[i].innerHTML = '<input type="text" class="form-control" value="' + cellContent + '">';
         }
-
         // Cambia el botón a un botón de guardar después de editar
         var editButton = cells[cells.length - 2].getElementsByTagName('button')[0];
-        editButton.innerHTML = 'Guardar';
+        editButton.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="16" viewBox="0 -960 960 960" width="16" fill="#e8eaed"><path d="M840-680v480q0 33-23.5 56.5T760-120H200q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h480l160 160Zm-80 34L646-760H200v560h560v-446ZM480-240q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35ZM240-560h360v-160H240v160Zm-40-86v446-560 114Z"/></svg>';
         editButton.onclick = function() { saveChanges(id); };
     }
 
