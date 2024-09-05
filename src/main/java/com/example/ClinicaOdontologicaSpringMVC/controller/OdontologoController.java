@@ -1,6 +1,7 @@
 package com.example.ClinicaOdontologicaSpringMVC.controller;
 
 import com.example.ClinicaOdontologicaSpringMVC.entity.Odontologo;
+import com.example.ClinicaOdontologicaSpringMVC.exception.ResourceNotFoundException;
 import com.example.ClinicaOdontologicaSpringMVC.service.OdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +27,13 @@ public class OdontologoController {
     }
 
     @GetMapping("/buscar/{id}")
-    public ResponseEntity<Optional<Odontologo>> buscarPorId(@PathVariable Integer id) {
-        return ResponseEntity.ok(odontologoService.buscarPorId(id));
+    public ResponseEntity<Optional<Odontologo>> buscarPorId(@PathVariable Integer id) throws ResourceNotFoundException {
+        Optional<Odontologo> odontologoBuscado= odontologoService.buscarPorId(id);
+        if(odontologoBuscado.isPresent()){
+            return ResponseEntity.ok(odontologoBuscado);
+        }else{
+            throw new ResourceNotFoundException("Odontologo no encontrado");
+        }
     }
     @GetMapping("/buscar")
     public ResponseEntity<Optional<Odontologo>> buscarPorMatricula(@RequestParam("matricula") String matricula) {

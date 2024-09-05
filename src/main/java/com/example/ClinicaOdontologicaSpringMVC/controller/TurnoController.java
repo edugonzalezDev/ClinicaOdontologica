@@ -3,6 +3,7 @@ package com.example.ClinicaOdontologicaSpringMVC.controller;
 import com.example.ClinicaOdontologicaSpringMVC.entity.Odontologo;
 import com.example.ClinicaOdontologicaSpringMVC.entity.Paciente;
 import com.example.ClinicaOdontologicaSpringMVC.entity.Turno;
+import com.example.ClinicaOdontologicaSpringMVC.exception.BadRequestException;
 import com.example.ClinicaOdontologicaSpringMVC.service.OdontologoService;
 import com.example.ClinicaOdontologicaSpringMVC.service.PacienteService;
 import com.example.ClinicaOdontologicaSpringMVC.service.TurnoService;
@@ -24,7 +25,7 @@ public class TurnoController {
     private OdontologoService odontologoService;
 
     @PostMapping
-    public ResponseEntity<Turno> registrarTurno(@RequestBody Turno turno){
+    public ResponseEntity<Turno> registrarTurno(@RequestBody Turno turno) throws BadRequestException {
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPorId(turno.getPaciente().getId());
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorId(turno.getOdontologo().getId());
 
@@ -32,7 +33,8 @@ public class TurnoController {
             return ResponseEntity.ok(turnoService.guardarTurno(turno));
 
         }else{
-            return ResponseEntity.badRequest().build();
+            String errorMessage = "El paciente o el odontólogo no existen.";
+            throw new BadRequestException(errorMessage);
         }
 
     }

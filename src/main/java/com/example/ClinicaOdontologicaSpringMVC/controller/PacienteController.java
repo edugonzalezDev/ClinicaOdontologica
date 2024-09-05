@@ -2,10 +2,12 @@ package com.example.ClinicaOdontologicaSpringMVC.controller;
 
 import com.example.ClinicaOdontologicaSpringMVC.entity.Odontologo;
 import com.example.ClinicaOdontologicaSpringMVC.entity.Paciente;
+import com.example.ClinicaOdontologicaSpringMVC.exception.ResourceNotFoundException;
 import com.example.ClinicaOdontologicaSpringMVC.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.ResourceAccessException;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,9 +30,14 @@ public class PacienteController {
         return ResponseEntity.ok(pacienteService.listarOdontologos());
     }
     @GetMapping("/buscar/{id}")
-    public   Optional<Paciente> buscarPorId (@PathVariable Integer id) {
-        Optional<Paciente> paciente = pacienteService.buscarPorId(id);
-        return paciente;
+    public   ResponseEntity<Optional<Paciente>> buscarPorId (@PathVariable Integer id) throws ResourceNotFoundException {
+        Optional<Paciente> pacienteBuscado= pacienteService.buscarPorId(id);
+        if(pacienteBuscado.isPresent()){
+            return ResponseEntity.ok(pacienteBuscado);
+        }else{
+            //en ese punto arroje una exception
+            throw new ResourceNotFoundException("Paciente no encontrado");
+        }
     }
     @PostMapping
     public Paciente guardarPaciente(@RequestBody Paciente paciente){
