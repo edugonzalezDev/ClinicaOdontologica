@@ -51,4 +51,9 @@ public class TurnoController {
             return ResponseEntity.notFound().build();
         }
     }
+    @DeleteMapping("/eliminar")
+    public void eliminarTurno(@RequestParam Integer id){
+        turnoService.eliminarTurno(id);
+    }
+
 }
