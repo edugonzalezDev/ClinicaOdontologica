@@ -38,7 +38,11 @@ public class TurnoController {
         }
 
     }
-    @GetMapping("/{id}")
+    @GetMapping("/todos")
+    public ResponseEntity<List<Turno>> listarTodos() {
+        return ResponseEntity.ok(turnoService.listarTurnos());
+    }
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<Turno> buscarTurnoPorId(@PathVariable Integer id) {
         Optional<Turno> turno = turnoService.buscarPorId(id);
         if (turno.isPresent()) {
