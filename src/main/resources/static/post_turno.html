@@ -6,7 +6,7 @@
     <title>Clínica Odontológica</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./styles/styles.css">
-    <script type="text/javascript" src="./js/post_odontologo.js"></script>
+    <script type="text/javascript" src="./js/post_turno.js"></script>
 </head>
 <body class="bg-dark text-light">
 <!-- Navbar -->
@@ -57,29 +57,37 @@
     </div>
 </nav>
 
-<!-- Odontologos Section -->
-<section id="odontologos" class="container my-5">
-    <h2 class="text-center">Gestión de Odontólogos</h2>
+<!-- Turnos Section -->
+<section id="turnos" class="container my-5">
+    <h2 class="text-center">Gestión de Turnos</h2>
 
-    <!-- Formulario para registrar un nuevo odontólogo -->
-    <form  id="add_new_odontologo" class="bg-secondary p-4 my-4 rounded">
-
-        <h4 class="text-light">Registroe un nuevo odontologo</h4>
+    <!-- Formulario para Registrar un Nuevo Turno -->
+    <form id="add_new_turno" class="bg-secondary p-4 my-4 rounded">
+        <h4 class="text-light">Registrar Nuevo Turno</h4>
         <div class="form-group">
-            <label for="nombre_odontologo">Nombre</label>
-            <input type="text" class="form-control" id="nombre_odontologo" placeholder="Introduce el nombre">
+            <label for="select-paciente">Seleccionar Paciente</label>
+            <select class="form-control" id="select-paciente">
+            </select>
         </div>
         <div class="form-group">
-            <label for="apellido_odontologo">Apellido</label>
-            <input type="text" class="form-control" id="apellido_odontologo" placeholder="Introduce el apellido">
+            <label for="select-odontologo">Seleccionar Odontólogo</label>
+            <select class="form-control" id="select-odontologo">
+            </select>
         </div>
         <div class="form-group">
-            <label for="matricula_odontologo">Matrícula</label>
-            <input type="text" class="form-control" id="matricula_odontologo" placeholder="Introduce la matrícula">
+            <label for="fecha">Fecha</label>
+            <input type="date" class="form-control" id="fecha">
         </div>
-        <button type="submit" class="btn btn-success btn-block">Registrar Odontólogo</button>
+        <div class="form-group">
+            <label for="hora">Hora</label>
+            <input type="time" class="form-control" id="hora">
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Registrar Turno</button>
     </form>
+
 </section>
+
+
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
