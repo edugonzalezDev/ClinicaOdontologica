@@ -6,6 +6,7 @@ window.addEventListener('load', function () {
 
     //Ante un submit del formulario se ejecutará la siguiente funcion
     formulario.addEventListener('submit', function (event) {
+        event.preventDefault(); // Evita que se envíe el formulario por defecto
 
        //creamos un JSON que tendrá los datos de la nueva película
         const formData = {
@@ -64,12 +65,11 @@ window.addEventListener('load', function () {
         document.querySelector('#nombre').value = "";
         document.querySelector('#apellido').value = "";
         document.querySelector('#cedula').value = "";
-        document.querySelector('#fechaIngreso').value = "";
+        document.querySelector('#correo').value = "";
         document.querySelector('#calle').value = "";
         document.querySelector('#numero').value = "";
         document.querySelector('#localidad').value = "";
         document.querySelector('#provincia').value = "";
-        document.querySelector('#correo').value = "";
 
     }
 

@@ -6,6 +6,7 @@ window.addEventListener('load', function () {
 
     //Ante un submit del formulario se ejecutará la siguiente funcion
     formulario.addEventListener('submit', function (event) {
+        event.preventDefault(); // Evita que se envíe el formulario por defecto
 
        //creamos un JSON que tendrá los datos de la nueva película
         const formData = {
