@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Odontológica - Registrar Paciente</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script type="text/javascript" src="./js/post_paciente.js"></script>
+</head>
+<body class="bg-dark text-light">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Clínica Odontológica</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#login">Login</a>
+            </li>
+
+            <!-- Pacientes Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="pacientesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Pacientes
+                </a>
+                <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="pacientesDropdown">
+                    <a class="dropdown-item" href="post_paciente.html">Registrar Paciente</a>
+                    <a class="dropdown-item" href="get_pacientes.html">Listar Pacientes</a>
+                </div>
+            </li>
+
+            <!-- Odontólogos Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="odontologosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Odontólogos
+                </a>
+                <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="odontologosDropdown">
+                    <a class="dropdown-item" href="post_odontologo.html">Registrar Odontólogo</a>
+                    <a class="dropdown-item" href="get_odontologos.html">Listar Odontólogos</a>
+                </div>
+            </li>
+
+            <!-- Turnos Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="turnosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Turnos
+                </a>
+                <div class="dropdown-menu dropdown-menu-dark dropdown-menu-right" aria-labelledby="turnosDropdown">
+                    <a class="dropdown-item" href="post_turno.html">Registrar Turno</a>
+                    <a class="dropdown-item" href="get_turnos.html">Listar Turnos</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Pacientes Section -->
+<section id="pacientes" class="container my-5">
+    <h2 class="text-center">Gestión de Pacientes</h2>
+
+    <!-- Formulario para Registrar un Nuevo Paciente -->
+    <form id="add_new_paciente" class="bg-secondary p-4 my-4 rounded">
+        <h4 class="text-light">Registrar Nuevo Paciente</h4>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="apellido">Apellido</label>
+                <input type="text" class="form-control" id="apellido" placeholder="Apellido">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="cedula">Cédula</label>
+            <input type="text" class="form-control" id="cedula" placeholder="Cédula">
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo Electrónico</label>
+            <input type="email" class="form-control" id="correo" placeholder="Correo Electrónico">
+        </div>
+        <div class="form-group">
+            <label for="calle">Calle</label>
+            <input type="text" class="form-control" id="calle" placeholder="Calle">
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="numero">Número</label>
+                <input type="text" class="form-control" id="numero" placeholder="Número">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="localidad">Localidad</label>
+                <input type="text" class="form-control" id="localidad" placeholder="Localidad">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="provincia">Provincia</label>
+                <input type="text" class="form-control" id="provincia" placeholder="Provincia">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Registrar Paciente</button>
+    </form>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
