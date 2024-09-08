@@ -6,11 +6,18 @@ function deleteBy(id)
           const settings = {
               method: 'DELETE'
           }
-          fetch(url,settings)
-          .then(response => response.json())
 
-          //borrar la fila de la pelicula eliminada
-          let row_id = "#tr_odontologo_" + id;
-          document.querySelector(row_id).remove();
-
+    fetch(url, settings)
+        .then(response => {
+            if (response.ok) {
+                // Eliminar la fila del odontologo solo si la respuesta es exitosa
+                let row_id = "#tr_odontologo_" + id;
+                document.querySelector(row_id).remove();
+            } else {
+                console.error('Error al eliminar el odontologo');
+            }
+        })
+        .catch(error => {
+            console.error('Hubo un problema con la petición:', error);
+        });
 }

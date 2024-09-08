@@ -57,6 +57,7 @@ function editar(id) {
                         body: JSON.stringify(formData)
                     }
                       fetch(url,settings)
-                      .then(response => response.json())
+
+                      .then(response => Promise.resolve())
 
     }
