@@ -33,35 +33,38 @@ window.addEventListener('load', function () {
             body: JSON.stringify(formData)
         }
 
-        fetch(url, settings)
-            .then(response => response.json())
+fetch(url, settings)
+            .then(response => {
+                if (!response.ok) {
+                    // Si la respuesta no es exitosa (por ejemplo, error 400), lanzamos un error
+                    return response.json().then(errorData => {
+                        throw new Error(errorData.message || 'Error al agregar el paciente, verifique los campos: Todos los campos deben estar completos, Nombre, Apellido y Cédula deben tener entre 3 y 15 caracteres y el Correo electrónico debe tener un formato correcto');
+                    });
+                }
+                return response.json(); // Si la respuesta es correcta, convertimos a JSON
+            })
             .then(data => {
-                 //Si no hay ningun error se muestra un mensaje diciendo que la pelicula
-                 //se agrego bien
-                 let successAlert = '<div class="alert alert-success alert-dismissible">' +
-                     '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                     '<strong></strong> Paciente agregado </div>'
+                // Mostrar mensaje de éxito
+                let successAlert = '<div class="alert alert-success alert-dismissible">' +
+                    '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                    '<strong></strong> Paciente agregado con éxito</div>';
 
-                 document.querySelector('#response').innerHTML = successAlert;
-                 document.querySelector('#response').style.display = "block";
-                 resetUploadForm();
-
+                document.querySelector('#response').innerHTML = successAlert;
+                document.querySelector('#response').style.display = "block";
+                resetUploadForm();
             })
             .catch(error => {
-                    //Si hay algun error se muestra un mensaje diciendo que la pelicula
-                    //no se pudo guardar y se intente nuevamente
-                    let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
-                                     '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                                     '<strong> Error intente nuevamente</strong> </div>'
+                // Mostrar mensaje de error
+                let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
+                    '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
+                    '<strong> Error: ' + error.message + '</strong> </div>';
 
-                      document.querySelector('#response').innerHTML = errorAlert;
-                      document.querySelector('#response').style.display = "block";
-                     //se dejan todos los campos vacíos por si se quiere ingresar otra pelicula
-                     resetUploadForm();})
+                document.querySelector('#response').innerHTML = errorAlert;
+                document.querySelector('#response').style.display = "block";
+            });
     });
 
-
-    function resetUploadForm(){
+    function resetUploadForm() {
         document.querySelector('#nombre').value = "";
         document.querySelector('#apellido').value = "";
         document.querySelector('#cedula').value = "";
@@ -70,9 +73,7 @@ window.addEventListener('load', function () {
         document.querySelector('#numero').value = "";
         document.querySelector('#localidad').value = "";
         document.querySelector('#provincia').value = "";
-
     }
-
 //    (function(){
 //        let pathname = window.location.pathname;
 //        if(pathname === "/"){
