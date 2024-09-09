@@ -74,7 +74,15 @@ window.addEventListener('load', function () {
         };
 
         fetch(url, settings)
-            .then(response => response.json())
+            .then(response =>  {
+                if (!response.ok) {
+                   // Si la respuesta no es exitosa (por ejemplo, error 400), lanzamos un error
+                    return response.json().then(errorData => {
+                        throw new Error(errorData.message || 'Error al registrar turno, verifique los campos: Todos los campos deben estar completos');
+                    });
+                }
+                return response.json(); // Si la respuesta es correcta, convertimos a JSON
+            })
             .then(data => {
                 let successAlert = '<div class="alert alert-success alert-dismissible">' +
                     '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
@@ -87,7 +95,7 @@ window.addEventListener('load', function () {
             .catch(error => {
                 let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
                     '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                    '<strong>Error, intente nuevamente</strong> </div>';
+                    '<strong> Error: ' + error.message + '</strong> </div>';
 
                 document.querySelector('#response').innerHTML = errorAlert;
                 document.querySelector('#response').style.display = "block";
