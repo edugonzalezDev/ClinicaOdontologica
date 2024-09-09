@@ -23,7 +23,7 @@ public class PacienteService {
     public Optional<Paciente> buscarPorCorreo(String correo){
         return pacienteRepository.findByCorreo(correo);
     }
-    public List<Paciente> listarOdontologos(){
+    public List<Paciente> listarPacientes(){
         return pacienteRepository.findAll();
     }
     public Paciente actualizarPaciente (Paciente paciente) {

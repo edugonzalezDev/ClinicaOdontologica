@@ -43,7 +43,16 @@ function editar(id) {
                         id: id,
                         nombre: document.querySelector('#nombre_paciente_'+id).innerText,
                         apellido: document.querySelector('#apellido_paciente_'+id).innerText,
+                        cedula: document.querySelector('#cedula_paciente_'+id).innerText,
+                        fechaIngreso: document.querySelector('#fechaIngreso_paciente_'+id).innerText,
                         correo: document.querySelector('#correo_paciente_'+id).innerText,
+                        domicilio: {
+                            id: document.querySelector('#id_domicilio_paciente_'+id).innerText,
+                            calle: document.querySelector('#calle_paciente_'+id).innerText,
+                            numero: document.querySelector('#numero_paciente_'+id).innerText,
+                            localidad: document.querySelector('#localidad_paciente_'+id).innerText,
+                            provincia: document.querySelector('#provincia_paciente_'+id).innerText,
+                        }
                     };
 
                     //invocamos utilizando la función fetch la API peliculas con el método PUT que modificará

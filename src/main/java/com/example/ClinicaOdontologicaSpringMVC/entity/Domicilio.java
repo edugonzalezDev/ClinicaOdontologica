@@ -1,6 +1,8 @@
 package com.example.ClinicaOdontologicaSpringMVC.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -18,7 +20,8 @@ public class Domicilio {
     private String calle;
 
     @NotNull
-    @Size(min = 3, max = 5)
+    @Min(value = 0, message = "El número debe ser mayor o igual a 0")
+    @Max(value = 9999, message = "El número debe ser menor o igual a 9999")
     private Integer numero;
 
     @NotNull

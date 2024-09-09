@@ -34,7 +34,7 @@ public class PacienteController {
 
     @GetMapping("/todos")
     public ResponseEntity<List<Paciente>> listarTodos(){
-        return ResponseEntity.ok(pacienteService.listarOdontologos());
+        return ResponseEntity.ok(pacienteService.listarPacientes());
     }
     @GetMapping("/buscar/{id}")
     public   ResponseEntity<Optional<Paciente>> buscarPorId (@PathVariable Integer id) throws ResourceNotFoundException {
