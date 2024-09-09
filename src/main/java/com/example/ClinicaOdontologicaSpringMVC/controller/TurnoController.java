@@ -4,6 +4,7 @@ import com.example.ClinicaOdontologicaSpringMVC.entity.Odontologo;
 import com.example.ClinicaOdontologicaSpringMVC.entity.Paciente;
 import com.example.ClinicaOdontologicaSpringMVC.entity.Turno;
 import com.example.ClinicaOdontologicaSpringMVC.exception.BadRequestException;
+import com.example.ClinicaOdontologicaSpringMVC.exception.ResourceNotFoundException;
 import com.example.ClinicaOdontologicaSpringMVC.service.OdontologoService;
 import com.example.ClinicaOdontologicaSpringMVC.service.PacienteService;
 import com.example.ClinicaOdontologicaSpringMVC.service.TurnoService;
@@ -43,12 +44,12 @@ public class TurnoController {
         return ResponseEntity.ok(turnoService.listarTurnos());
     }
     @GetMapping("/buscar/{id}")
-    public ResponseEntity<Turno> buscarTurnoPorId(@PathVariable Integer id) {
-        Optional<Turno> turno = turnoService.buscarPorId(id);
-        if (turno.isPresent()) {
-            return ResponseEntity.ok(turno.get());
+    public ResponseEntity<Turno> buscarTurnoPorId(@PathVariable Integer id) throws ResourceNotFoundException {
+        Optional<Turno> turnoBuscado = turnoService.buscarPorId(id);
+        if (turnoBuscado.isPresent()) {
+            return ResponseEntity.ok(turnoBuscado.get());
         } else {
-            return ResponseEntity.notFound().build();
+            throw new ResourceNotFoundException("Turno no encontrado");
         }
     }
     @DeleteMapping("/eliminar")
