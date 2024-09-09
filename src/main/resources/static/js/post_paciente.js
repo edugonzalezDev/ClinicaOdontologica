@@ -33,7 +33,7 @@ window.addEventListener('load', function () {
             body: JSON.stringify(formData)
         }
 
-fetch(url, settings)
+        fetch(url, settings)
             .then(response => {
                 if (!response.ok) {
                     // Si la respuesta no es exitosa (por ejemplo, error 400), lanzamos un error

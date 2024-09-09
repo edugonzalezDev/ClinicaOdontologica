@@ -26,8 +26,16 @@ window.addEventListener('load', function () {
         }
 
         fetch(url, settings)
-            .then(response => response.json())
-            .then(data => {
+            .then(response => {
+                 if (!response.ok) {
+                     // Si la respuesta no es exitosa (por ejemplo, error 400), lanzamos un error
+                     return response.json().then(errorData => {
+                         throw new Error(errorData.message || 'Error al agregar el odontologo, verifique los campos: Todos los campos deben estar completos, Nombre, Apellido y Matricula deben tener entre 3 y 15 caracteres');
+                     });
+                 }
+                 return response.json(); // Si la respuesta es correcta, convertimos a JSON
+             })
+             .then(data => {
                  //Si no hay ningun error se muestra un mensaje diciendo que la pelicula
                  //se agrego bien
                  let successAlert = '<div class="alert alert-success alert-dismissible">' +
@@ -44,7 +52,7 @@ window.addEventListener('load', function () {
                     //no se pudo guardar y se intente nuevamente
                     let errorAlert = '<div class="alert alert-danger alert-dismissible">' +
                                      '<button type="button" class="close" data-dismiss="alert">&times;</button>' +
-                                     '<strong> Error intente nuevamente</strong> </div>'
+                                     '<strong> Error: ' + error.message + '</strong> </div>'
 
                       document.querySelector('#response').innerHTML = errorAlert;
                       document.querySelector('#response').style.display = "block";
