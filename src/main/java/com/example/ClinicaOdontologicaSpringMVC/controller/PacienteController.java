@@ -21,10 +21,17 @@ public class PacienteController {
     public PacienteController() {
         pacienteService= new PacienteService();
     }
+
     @GetMapping("/buscar")
-    public Optional<Paciente> buscarPorCorreo(@RequestParam("email") String email)  {
-        return pacienteService.buscarPorCorreo(email);
+    public ResponseEntity<Optional<Paciente>> buscarPorCorreo(@RequestParam("email") String email) throws ResourceNotFoundException {
+        Optional<Paciente> pacienteBuscado=pacienteService.buscarPorCorreo(email);
+        if (pacienteBuscado.isPresent()) {
+            return ResponseEntity.ok(pacienteBuscado);
+        }else {
+            throw new ResourceNotFoundException("Paciente no encontrado");
+        }
     }
+
     @GetMapping("/todos")
     public ResponseEntity<List<Paciente>> listarTodos(){
         return ResponseEntity.ok(pacienteService.listarOdontologos());
