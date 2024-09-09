@@ -55,5 +55,9 @@ public class TurnoController {
     public void eliminarTurno(@RequestParam Integer id){
         turnoService.eliminarTurno(id);
     }
+    @PutMapping("/actualizar")
+    public Turno actualizarTurno (@RequestBody Turno turno){
+        return turnoService.actualizarTurno(turno);
+    }
 
 }
