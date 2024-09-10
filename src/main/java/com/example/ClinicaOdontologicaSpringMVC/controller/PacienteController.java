@@ -2,6 +2,7 @@ package com.example.ClinicaOdontologicaSpringMVC.controller;
 
 import com.example.ClinicaOdontologicaSpringMVC.entity.Odontologo;
 import com.example.ClinicaOdontologicaSpringMVC.entity.Paciente;
+import com.example.ClinicaOdontologicaSpringMVC.exception.BadRequestException;
 import com.example.ClinicaOdontologicaSpringMVC.exception.ResourceNotFoundException;
 import com.example.ClinicaOdontologicaSpringMVC.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class PacienteController {
     }
 
     @GetMapping("/todos")
-    public ResponseEntity<List<Paciente>> listarTodos(){
+    public ResponseEntity<List<Paciente>> listarTodos() throws BadRequestException {
         return ResponseEntity.ok(pacienteService.listarPacientes());
     }
     @GetMapping("/buscar/{id}")
