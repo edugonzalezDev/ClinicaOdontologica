@@ -40,7 +40,7 @@ public class TurnoController {
 
     }
     @GetMapping("/todos")
-    public ResponseEntity<List<Turno>> listarTodos() {
+    public ResponseEntity<List<Turno>> listarTodos() throws BadRequestException {
         return ResponseEntity.ok(turnoService.listarTurnos());
     }
     @GetMapping("/buscar/{id}")

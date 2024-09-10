@@ -1,6 +1,6 @@
 function deleteBy(id)
 {
-          //con fetch invocamos a la API de peliculas con el método DELETE
+          //con fetch invocamos a la API de Odontologos con el método DELETE
           //pasandole el id en la URL
           const url = '/odontologo/eliminar/'+ id;
           const settings = {

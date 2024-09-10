@@ -1,8 +1,8 @@
 window.addEventListener('load', function () {
     (function(){
 
-      //con fetch invocamos a la API de peliculas con el método GET
-      //nos devolverá un JSON con una colección de peliculas
+      //con fetch invocamos a la API de Odontologos con el método GET
+      //nos devolverá un JSON con una colección de Odontologos
       const url = '/odontologo/todos';
       const settings = {
         method: 'GET'
@@ -11,18 +11,18 @@ window.addEventListener('load', function () {
       fetch(url,settings)
       .then(response => response.json())
       .then(data => {
-      //recorremos la colección de peliculas del JSON
+      //recorremos la colección de Odontologos del JSON
          for(odontologo of data){
-            //por cada pelicula armaremos una fila de la tabla
-            //cada fila tendrá un id que luego nos permitirá borrar la fila si eliminamos la pelicula
+            //por cada odontologo armaremos una fila de la tabla
+            //cada fila tendrá un id que luego nos permitirá borrar la fila si eliminamos al odontologo
             var table = document.getElementById("odontologoTable");
             var odontologoRow =table.insertRow();
             let tr_id = 'tr_odontologo_' + odontologo.id;
            odontologoRow.id = tr_id;
 
-            //por cada pelicula creamos un boton delete que agregaremos en cada fila para poder eliminar la misma
+            //por cada odontologo creamos un boton delete que agregaremos en cada fila para poder eliminar el mismo
             //dicho boton invocara a la funcion de java script deleteByKey que se encargará
-            //de llamar a la API para eliminar una pelicula
+            //de llamar a la API para eliminar un odontologo
             let deleteButton = '<button' +
                                       ' id=' + '\"' + 'btn_delete_odontologo_' + odontologo.id + '\"' +
                                       ' type="button" onclick="deleteBy('+odontologo.id+')" class="btn btn-danger btn-sm">' +

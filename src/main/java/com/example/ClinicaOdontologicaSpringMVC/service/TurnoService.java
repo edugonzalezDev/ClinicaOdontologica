@@ -1,5 +1,6 @@
 package com.example.ClinicaOdontologicaSpringMVC.service;
 
+import com.example.ClinicaOdontologicaSpringMVC.exception.BadRequestException;
 import com.example.ClinicaOdontologicaSpringMVC.repository.TurnoRepository;
 import com.example.ClinicaOdontologicaSpringMVC.entity.Turno;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,11 @@ public class TurnoService {
     public void eliminarTurno (Integer id) {
         turnoRepository.deleteById(id);
     }
-    public List<Turno> listarTurnos(){
-        return turnoRepository.findAll();
+    public List<Turno> listarTurnos() throws BadRequestException {
+        List<Turno> turnos = turnoRepository.findAll();
+        if (turnos.isEmpty()) {
+            throw new BadRequestException("No se encontraron turnos registrados");
+        }
+        return turnos;
     }
 }
