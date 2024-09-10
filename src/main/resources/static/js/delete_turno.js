@@ -1,6 +1,6 @@
 function deleteBy(id)
 {
-          //con fetch invocamos a la API de peliculas con el método DELETE
+          //con fetch invocamos a la API de Turno con el método DELETE
           //pasandole el id en la URL
           const url = '/turno/eliminar?id='+ id;
           const settings = {
