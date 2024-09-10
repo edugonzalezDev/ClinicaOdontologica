@@ -32,7 +32,7 @@ public class PacienteController {
             throw new ResourceNotFoundException("Paciente no encontrado");
         }
     }
-
+//
     @GetMapping("/todos")
     public ResponseEntity<List<Paciente>> listarTodos() throws BadRequestException {
         return ResponseEntity.ok(pacienteService.listarPacientes());
