@@ -1,6 +1,5 @@
 package com.example.ClinicaOdontologicaSpringMVC.service;
 
-import com.example.ClinicaOdontologicaSpringMVC.exception.BadRequestException;
 import com.example.ClinicaOdontologicaSpringMVC.repository.OdontologoRepository;
 import com.example.ClinicaOdontologicaSpringMVC.entity.Odontologo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +22,8 @@ public class OdontologoService {
     public Optional<Odontologo> buscarPorMatricula(String matricula){
      return odontologoRepository.findByMatricula(matricula);
     }
-    public List<Odontologo> listarOdontologos() throws BadRequestException {
-        List<Odontologo> odontologos = odontologoRepository.findAll();
-        if (odontologos.isEmpty()) {
-            throw new BadRequestException("No se encontraron odontólogos registrados");
-        }
-        return odontologos;
+    public List<Odontologo> listarOdontologos(){
+        return odontologoRepository.findAll();
     }
     public void eliminarOdontologo (Integer id) {
         odontologoRepository.deleteById(id);
