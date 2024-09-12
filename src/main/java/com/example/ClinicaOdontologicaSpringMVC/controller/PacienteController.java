@@ -56,7 +56,23 @@ public class PacienteController {
         pacienteService.eliminarPaciente(id);
     }
     @PutMapping("/actualizar")
-    public Paciente actualizarPaciente (@RequestBody Paciente paciente){
+    public Paciente actualizarPaciente(@RequestBody Paciente paciente) throws BadRequestException {
+        if (paciente.getId() == null) {
+            throw new BadRequestException("El ID del paciente no puede ser nulo");
+        }
+        // Otras validaciones, como nombres, apellidos, etc.
+        if (paciente.getNombre() == null || paciente.getNombre().isEmpty()) {
+            System.out.println("El nombre del paciente no puede estar vacío");
+            throw new BadRequestException("El nombre del paciente no puede estar vacío");
+
+        }
+        if (paciente.getApellido() == null || paciente.getApellido().isEmpty()) {
+            throw new BadRequestException("El apellido del paciente no puede estar vacío");
+        }
+        if (paciente.getCedula() == null || paciente.getCedula().isEmpty()) {
+            throw new BadRequestException("La cedula del paciente no puede estar vacío");
+        }
+
         return pacienteService.actualizarPaciente(paciente);
     }
 
