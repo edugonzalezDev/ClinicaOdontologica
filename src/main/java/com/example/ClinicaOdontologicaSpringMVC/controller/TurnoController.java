@@ -57,7 +57,11 @@ public class TurnoController {
         turnoService.eliminarTurno(id);
     }
     @PutMapping("/actualizar")
-    public Turno actualizarTurno (@RequestBody Turno turno){
+    public Turno actualizarTurno(@RequestBody Turno turno) throws BadRequestException {
+        if (turno.getId() == null) {
+            throw new BadRequestException("El ID del turno no puede ser nulo");
+        }
+        // Otras validaciones según sea necesario
         return turnoService.actualizarTurno(turno);
     }
 

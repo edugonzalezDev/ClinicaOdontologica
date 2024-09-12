@@ -31,7 +31,7 @@ public class Paciente {
     @Size(min = 3, max = 15)
     private String cedula;
 
-    @NotNull
+
     private LocalDate fechaIngreso;
 
     @OneToOne(cascade = CascadeType.ALL)
