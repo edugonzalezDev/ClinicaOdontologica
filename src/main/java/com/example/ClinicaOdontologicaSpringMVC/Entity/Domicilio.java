@@ -10,6 +10,8 @@ import lombok.*;
 @Data
 @Entity
 @Table(name="domicilio")
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class Domicilio {
     @Id
