@@ -23,7 +23,7 @@ public class DatosIniciales implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        String passSinCifrar = "digitalHouse";
+        String passSinCifrar = "asd123";
         String passCifrado = bCryptPasswordEncoder.encode(passSinCifrar);
 
         // Verificar si el usuario ya existe antes de guardarlo
@@ -33,6 +33,13 @@ public class DatosIniciales implements ApplicationRunner {
             logger.info("Usuario 'admin@admin.com' cargado con éxito");
         } else {
             logger.info("Usuario 'admin@admin.com' ya existe, no se cargó de nuevo.");
+        }
+        if (usuarioRepository.findByEmail("user@user.com").isEmpty()) {
+            Usuario usuarioAInsertar2 = new Usuario("usuario", "usuariodh", "user@user.com", passCifrado, UsuarioRole.ROLE_USER);
+            usuarioRepository.save(usuarioAInsertar2);
+            logger.info("Usuario 'user@user.com' cargado con éxito");;
+        } else {
+            logger.info("Usuario 'user@user.com' ya existe, no se cargó de nuevo.");
         }
     }
 }

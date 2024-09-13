@@ -1,13 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Resultado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Odontológica</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
-<body>
-<p>Bienvenido Paciente: </p>
-<span th:text="${nombre}"> </span> <span th:text="${apellido}"></span>
+<body class="bg-dark text-light">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Clínica Odontológica</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#login">Login</a>
+            </li>
+            <!-- Otros elementos del menú -->
+        </ul>
+    </div>
+</nav>
 
+<!-- Login Section -->
+<section id="login" class="container my-5">
+    <h2 class="text-center">Iniciar Sesión</h2>
+    <form class="row bg-secondary p-4 my-4 rounded" action="/login" method="POST">
+        <div class="form-group col-md-6">
+            <label for="username">Usuario</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Introduce tu usuario" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Introduce tu contraseña" required>
+        </div>
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </div>
+    </form>
+</section>
 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -36,9 +36,14 @@ public class WebSecurityConfig {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests((authz) -> authz
-//                            .requestMatchers("/post_paciente.html").hasRole("USER")
-                            .requestMatchers("/h2-console/**").permitAll() // Permitir acceso a la consola H2
+//                            .requestMatchers("/paciente").hasRole("ADMIN")
                             .requestMatchers(antMatcher(HttpMethod.POST, "/paciente")).hasRole("ADMIN")
+                            .requestMatchers(antMatcher(HttpMethod.POST, "/odontologo")).hasRole("ADMIN")
+                            .requestMatchers(antMatcher(HttpMethod.POST, "/turno")).hasAnyRole("ADMIN", "USER")
+                            .requestMatchers(antMatcher(HttpMethod.PUT, "/paciente/actualizar")).hasRole("ADMIN")
+                            .requestMatchers(antMatcher(HttpMethod.PUT, "/odontologo/actualizar")).hasRole("ADMIN")
+                            .requestMatchers(antMatcher(HttpMethod.DELETE, "/paciente/eliminar")).hasRole("ADMIN")
+                            .requestMatchers(antMatcher(HttpMethod.DELETE, "/odontologo/eliminar/**")).hasRole("ADMIN")
         //                        .requestMatchers("/**").permitAll()
                             .anyRequest().authenticated()
             )
