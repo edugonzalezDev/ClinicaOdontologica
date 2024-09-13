@@ -1,5 +1,17 @@
 window.addEventListener('load', function () {
+    function establecerFechaMinima() {
+        const inputFecha = document.querySelector('#fecha');
+        const hoy = new Date();
+        const year = hoy.getFullYear();
+        const month = ('0' + (hoy.getMonth() + 1)).slice(-2); // Añadir el 0 en meses de 1 dígito
+        const day = ('0' + hoy.getDate()).slice(-2); // Añadir el 0 en días de 1 dígito
 
+        const fechaMinima = `${year}-${month}-${day}`; // Usar backticks correctos
+        inputFecha.setAttribute('min', fechaMinima);
+    }
+
+        // Establecer la fecha mínima al cargar la página
+        establecerFechaMinima();
     // Función para cargar los pacientes en el selector
     function cargarPacientes() {
         const urlPacientes = '/paciente/todos'; // Ajusta el endpoint según tu API
@@ -99,7 +111,6 @@ window.addEventListener('load', function () {
 
                 document.querySelector('#response').innerHTML = errorAlert;
                 document.querySelector('#response').style.display = "block";
-                resetForm();
             });
     });
 
@@ -108,6 +119,5 @@ window.addEventListener('load', function () {
         document.querySelector('#select-paciente').selectedIndex = 0;
         document.querySelector('#select-odontologo').selectedIndex = 0;
         document.querySelector('#fecha').value = "";
-        document.querySelector('#hora').value = "";
     }
 });

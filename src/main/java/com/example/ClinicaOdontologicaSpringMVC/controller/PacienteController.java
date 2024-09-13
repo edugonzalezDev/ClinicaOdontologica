@@ -72,6 +72,10 @@ public class PacienteController {
         if (paciente.getCedula() == null || paciente.getCedula().isEmpty()) {
             throw new BadRequestException("La cedula del paciente no puede estar vacío");
         }
+        if (paciente.getDomicilio() == null || paciente.getDomicilio().getCalle().isEmpty() || paciente.getDomicilio().getLocalidad().isEmpty() || paciente.getDomicilio().getProvincia().isEmpty() || paciente.getDomicilio().getNumero() == null) {
+            System.out.println("Los datos de Domicilio deben estar completos");
+            throw new BadRequestException("Los datos de Domicilio deben estar completos");
+        }
 
         return pacienteService.actualizarPaciente(paciente);
     }

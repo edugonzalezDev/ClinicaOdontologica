@@ -1,6 +1,8 @@
 package com.example.ClinicaOdontologicaSpringMVC.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
@@ -23,5 +25,6 @@ public class Turno {
     private Odontologo odontologo;
 
     @NotNull
+    @FutureOrPresent(message = "La fecha no debe estar en el pasado")
     private LocalDate fecha;
 }
