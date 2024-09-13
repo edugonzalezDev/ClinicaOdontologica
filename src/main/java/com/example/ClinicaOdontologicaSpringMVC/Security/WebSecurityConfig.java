@@ -36,7 +36,8 @@ public class WebSecurityConfig {
         http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests((authz) -> authz
-//                            .requestMatchers("/paciente").hasRole("ADMIN")
+                            .requestMatchers("/", "/login", "/styles/**", "/js/**", "/assets/**").permitAll() // Permitir acceso a estas rutas sin autenticación
+                            .requestMatchers("/paciente").hasRole("ADMIN")
                             .requestMatchers(antMatcher(HttpMethod.POST, "/paciente")).hasRole("ADMIN")
                             .requestMatchers(antMatcher(HttpMethod.POST, "/odontologo")).hasRole("ADMIN")
                             .requestMatchers(antMatcher(HttpMethod.POST, "/turno")).hasAnyRole("ADMIN", "USER")
@@ -50,8 +51,17 @@ public class WebSecurityConfig {
 //            .headers(headers -> headers
 //                    .frameOptions(frameOptions -> frameOptions.disable()) // Deshabilitar restricciones de frame
 //            )
-            .formLogin(withDefaults())
-            .logout(withDefaults());
+                .formLogin(login -> login
+                        .loginPage("/login.html") // Ruta del formulario de login
+                        .loginProcessingUrl("/login") // Acción del formulario
+                        .defaultSuccessUrl("/", true) // Redirige a /home después de login exitoso
+                        .permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login?logout") // Redirige a /login después del logout
+                        .permitAll()
+                );
 
         return http.build();
     }
