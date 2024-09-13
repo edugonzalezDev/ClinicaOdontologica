@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
-<body class="bg-dark text-light">
+<body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="/">Clínica Odontológica</a>
@@ -16,10 +16,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#login">Login</a>
-            </li>
-
             <!-- Pacientes Dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="pacientesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,27 +48,86 @@
                     <a class="dropdown-item" href="get_turnos.html">Listar Turnos</a>
                 </div>
             </li>
+
+            <!-- Cerrar Sesión -->
+            <li class="nav-item">
+                <a class="nav-link btn btn-outline-danger" href="/logout">Cerrar sesión</a>
+            </li>
         </ul>
     </div>
 </nav>
 
-<!-- Login Section -->
-<section id="login" class="container my-5">
-    <h2 class="text-center">Iniciar Sesión</h2>
-    <form class="row bg-secondary p-4 my-4 rounded" action="/login" method="POST">
-        <div class="form-group col-md-6">
-            <label for="username">Usuario</label>
-            <input type="text" class="form-control" id="username" name="username" placeholder="Introduce tu usuario" required>
-        </div>
-        <div class="form-group col-md-6">
-            <label for="password">Contraseña</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Introduce tu contraseña" required>
-        </div>
-        <div class="col-md-12">
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
-        </div>
-    </form>
+<!-- Banner principal -->
+<section class="jumbotron text-center bg-secondary text-light mb-5">
+    <div class="container">
+        <h1 class="display-4">Tu sonrisa, nuestra prioridad</h1>
+        <p class="lead">En la Clínica Odontológica, brindamos atención personalizada para que tengas una salud bucal impecable.</p>
+        <a href="post_turno.html" class="btn btn-primary btn-lg">Agendar una cita</a>
+    </div>
 </section>
+
+<!-- Sobre Nosotros -->
+<section class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="./assets/aboutus.webp" alt="Clínica Odontológica" class="img-fluid rounded shadow-sm">
+        </div>
+        <div class="col-md-6 bg-secondary">
+            <h2>Sobre Nosotros</h2>
+            <p>Con más de 20 años de experiencia, nuestra clínica se dedica a ofrecer servicios odontológicos de alta calidad. Nuestros profesionales están comprometidos con tu bienestar y satisfacción.</p>
+            <ul>
+                <li>Atención personalizada</li>
+                <li>Última tecnología en tratamientos</li>
+                <li>Ambiente amigable y cómodo</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonios -->
+<section class="text-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Lo que nuestros pacientes dicen</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card bg-secondary text-light shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">"Recibí un tratamiento increíble. El equipo fue muy profesional y amable. ¡Ahora tengo una sonrisa perfecta!"</p>
+                        <p class="card-text"><small class="text-muted">- Juan Pérez</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-secondary text-light shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">"La clínica tiene un ambiente muy cómodo y moderno. Me sentí muy bien atendido desde el primer día."</p>
+                        <p class="card-text"><small class="text-muted">- María López</small></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-secondary text-light shadow-sm">
+                    <div class="card-body">
+                        <p class="card-text">"Los profesionales realmente se preocupan por tu bienestar. Estoy muy satisfecho con los resultados."</p>
+                        <p class="card-text"><small class="text-muted">- Carlos Sánchez</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-light py-4">
+    <div class="container text-center">
+        <p>Clínica Odontológica &copy; 2024. Todos los derechos reservados.</p>
+        <div>
+            <a href="#" class="text-light mr-3">Facebook</a>
+            <a href="#" class="text-light mr-3">Instagram</a>
+            <a href="#" class="text-light">LinkedIn</a>
+        </div>
+    </div>
+</footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
