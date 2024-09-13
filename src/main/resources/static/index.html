@@ -19,7 +19,39 @@
             <li class="nav-item">
                 <a class="nav-link" href="#login">Login</a>
             </li>
-            <!-- Otros elementos del menú -->
+
+            <!-- Pacientes Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="pacientesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Pacientes
+                </a>
+                <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="pacientesDropdown">
+                    <a class="dropdown-item" href="post_paciente.html">Registrar Paciente</a>
+                    <a class="dropdown-item" href="get_pacientes.html">Listar Pacientes</a>
+                </div>
+            </li>
+
+            <!-- Odontólogos Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="odontologosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Odontólogos
+                </a>
+                <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="odontologosDropdown">
+                    <a class="dropdown-item" href="post_odontologo.html">Registrar Odontólogo</a>
+                    <a class="dropdown-item" href="get_odontologos.html">Listar Odontólogos</a>
+                </div>
+            </li>
+
+            <!-- Turnos Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="turnosDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Turnos
+                </a>
+                <div class="dropdown-menu dropdown-menu-dark dropdown-menu-right" aria-labelledby="turnosDropdown">
+                    <a class="dropdown-item" href="post_turno.html">Registrar Turno</a>
+                    <a class="dropdown-item" href="get_turnos.html">Listar Turnos</a>
+                </div>
+            </li>
         </ul>
     </div>
 </nav>
