@@ -1,4 +1,4 @@
-package com.example.ClinicaOdontologicaSpringMVC.entity;
+package com.example.ClinicaOdontologicaSpringMVC.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,7 +8,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 @Entity
 @Table(name="usuario")

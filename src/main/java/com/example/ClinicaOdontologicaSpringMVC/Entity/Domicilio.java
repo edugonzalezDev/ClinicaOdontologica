@@ -1,4 +1,4 @@
-package com.example.ClinicaOdontologicaSpringMVC.entity;
+package com.example.ClinicaOdontologicaSpringMVC.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;

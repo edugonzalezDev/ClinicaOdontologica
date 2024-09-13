@@ -1,4 +1,4 @@
-package com.example.ClinicaOdontologicaSpringMVC.exception;
+package com.example.ClinicaOdontologicaSpringMVC.Exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

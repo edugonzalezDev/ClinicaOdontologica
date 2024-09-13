@@ -1,7 +1,7 @@
-package com.example.ClinicaOdontologicaSpringMVC.service;
+package com.example.ClinicaOdontologicaSpringMVC.Service;
 
-import com.example.ClinicaOdontologicaSpringMVC.entity.Usuario;
-import com.example.ClinicaOdontologicaSpringMVC.repository.UsuarioRepository;
+import com.example.ClinicaOdontologicaSpringMVC.Entity.Usuario;
+import com.example.ClinicaOdontologicaSpringMVC.Repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

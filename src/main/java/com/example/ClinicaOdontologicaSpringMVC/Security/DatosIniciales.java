@@ -1,14 +1,13 @@
 package com.example.ClinicaOdontologicaSpringMVC.Security;
 
-import com.example.ClinicaOdontologicaSpringMVC.entity.Usuario;
-import com.example.ClinicaOdontologicaSpringMVC.entity.UsuarioRole;
-import com.example.ClinicaOdontologicaSpringMVC.repository.UsuarioRepository;
+import com.example.ClinicaOdontologicaSpringMVC.Entity.Usuario;
+import com.example.ClinicaOdontologicaSpringMVC.Entity.UsuarioRole;
+import com.example.ClinicaOdontologicaSpringMVC.Repository.UsuarioRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,13 +1,13 @@
-package com.example.ClinicaOdontologicaSpringMVC.controller;
+package com.example.ClinicaOdontologicaSpringMVC.Controller;
 
-import com.example.ClinicaOdontologicaSpringMVC.entity.Odontologo;
-import com.example.ClinicaOdontologicaSpringMVC.entity.Paciente;
-import com.example.ClinicaOdontologicaSpringMVC.entity.Turno;
-import com.example.ClinicaOdontologicaSpringMVC.exception.BadRequestException;
-import com.example.ClinicaOdontologicaSpringMVC.exception.ResourceNotFoundException;
-import com.example.ClinicaOdontologicaSpringMVC.service.OdontologoService;
-import com.example.ClinicaOdontologicaSpringMVC.service.PacienteService;
-import com.example.ClinicaOdontologicaSpringMVC.service.TurnoService;
+import com.example.ClinicaOdontologicaSpringMVC.Entity.Odontologo;
+import com.example.ClinicaOdontologicaSpringMVC.Entity.Paciente;
+import com.example.ClinicaOdontologicaSpringMVC.Entity.Turno;
+import com.example.ClinicaOdontologicaSpringMVC.Exception.BadRequestException;
+import com.example.ClinicaOdontologicaSpringMVC.Exception.ResourceNotFoundException;
+import com.example.ClinicaOdontologicaSpringMVC.Service.OdontologoService;
+import com.example.ClinicaOdontologicaSpringMVC.Service.PacienteService;
+import com.example.ClinicaOdontologicaSpringMVC.Service.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

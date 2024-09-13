@@ -1,6 +1,6 @@
-package com.example.ClinicaOdontologicaSpringMVC.service;
+package com.example.ClinicaOdontologicaSpringMVC.Service;
 
-import com.example.ClinicaOdontologicaSpringMVC.repository.DomicilioRepository;
+import com.example.ClinicaOdontologicaSpringMVC.Repository.DomicilioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

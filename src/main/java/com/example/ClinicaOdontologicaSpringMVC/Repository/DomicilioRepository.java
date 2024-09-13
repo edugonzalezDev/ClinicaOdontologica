@@ -1,6 +1,6 @@
-package com.example.ClinicaOdontologicaSpringMVC.repository;
+package com.example.ClinicaOdontologicaSpringMVC.Repository;
 
-import com.example.ClinicaOdontologicaSpringMVC.entity.Domicilio;
+import com.example.ClinicaOdontologicaSpringMVC.Entity.Domicilio;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

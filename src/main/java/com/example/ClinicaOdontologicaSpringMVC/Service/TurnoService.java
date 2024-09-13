@@ -1,8 +1,8 @@
-package com.example.ClinicaOdontologicaSpringMVC.service;
+package com.example.ClinicaOdontologicaSpringMVC.Service;
 
-import com.example.ClinicaOdontologicaSpringMVC.exception.BadRequestException;
-import com.example.ClinicaOdontologicaSpringMVC.repository.TurnoRepository;
-import com.example.ClinicaOdontologicaSpringMVC.entity.Turno;
+import com.example.ClinicaOdontologicaSpringMVC.Exception.BadRequestException;
+import com.example.ClinicaOdontologicaSpringMVC.Repository.TurnoRepository;
+import com.example.ClinicaOdontologicaSpringMVC.Entity.Turno;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
