@@ -35,6 +35,7 @@ public class PacienteController {
     public ResponseEntity<List<Paciente>> listarTodos() throws BadRequestException {
         return ResponseEntity.ok(pacienteService.listarPacientes());
     }
+
     @GetMapping("/buscar/{id}")
     public   ResponseEntity<Optional<Paciente>> buscarPorId (@PathVariable Integer id) throws ResourceNotFoundException {
         Optional<Paciente> pacienteBuscado= pacienteService.buscarPorId(id);
@@ -45,6 +46,7 @@ public class PacienteController {
             throw new ResourceNotFoundException("Paciente no encontrado");
         }
     }
+
     @PostMapping
     public ResponseEntity<Paciente> guardarPaciente(@RequestBody Paciente paciente) throws BadRequestException {
         // Validaciones antes de guardar
@@ -63,10 +65,17 @@ public class PacienteController {
 
         return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
     }
+
     @DeleteMapping("/eliminar")
-    public void eliminarPaciente(@RequestParam Integer id){
+    public ResponseEntity<String> eliminarPaciente(@RequestParam Integer id) throws BadRequestException {
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorId(id);
+        if (!pacienteBuscado.isPresent()) {
+            throw new BadRequestException("El paciente con el ID proporcionado no existe");
+        }
         pacienteService.eliminarPaciente(id);
+        return ResponseEntity.ok("Paciente eliminado correctamente");
     }
+
     @PutMapping("/actualizar")
     public Paciente actualizarPaciente(@RequestBody Paciente paciente) throws BadRequestException {
         if (paciente.getId() == null) {
