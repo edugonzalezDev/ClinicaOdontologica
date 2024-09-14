@@ -35,12 +35,19 @@ public class OdontologoController {
     }
 
     @GetMapping("/buscar/{id}")
-    public ResponseEntity<Optional<Odontologo>> buscarPorId(@PathVariable Integer id) throws ResourceNotFoundException {
-        Optional<Odontologo> odontologoBuscado= odontologoService.buscarPorId(id);
-        if(odontologoBuscado.isPresent()){
+    public ResponseEntity<Optional<Odontologo>> buscarPorId(@PathVariable Integer id) throws BadRequestException, ResourceNotFoundException {
+        // Verificar que el ID no sea nulo o negativo
+        if (id == null || id <= 0) {
+            throw new BadRequestException("El ID proporcionado no es válido. Debe ser un número positivo.");
+        }
+
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorId(id);
+
+        // Lanzar excepción si el odontólogo no fue encontrado
+        if (odontologoBuscado.isPresent()) {
             return ResponseEntity.ok(odontologoBuscado);
-        }else{
-            throw new ResourceNotFoundException("Odontologo no encontrado");
+        } else {
+            throw new ResourceNotFoundException("Odontólogo no encontrado con el ID: " + id);
         }
     }
     @GetMapping("/buscar")
