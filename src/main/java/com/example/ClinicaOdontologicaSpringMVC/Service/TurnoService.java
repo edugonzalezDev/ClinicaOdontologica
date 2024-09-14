@@ -24,9 +24,11 @@ public class TurnoService {
     public Optional<Turno> buscarPorId(Integer id) {
         return turnoRepository.findById(id);
     }
+
     public Turno actualizarTurno(Turno turno) {
         return turnoRepository.save(turno);
     }
+
     public void eliminarTurno (Integer id) {
         turnoRepository.deleteById(id);
     }

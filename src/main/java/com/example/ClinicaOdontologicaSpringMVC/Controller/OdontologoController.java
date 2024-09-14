@@ -43,9 +43,14 @@ public class OdontologoController {
             throw new ResourceNotFoundException("Odontologo no encontrado");
         }
     }
+
     @GetMapping("/buscar")
-    public ResponseEntity<Optional<Odontologo>> buscarPorMatricula(@RequestParam("matricula") String matricula) {
-        return ResponseEntity.ok(odontologoService.buscarPorMatricula(matricula));
+    public ResponseEntity<Optional<Odontologo>> buscarPorMatricula(@RequestParam("matricula") String matricula)  throws ResourceNotFoundException {
+        Optional<Odontologo> odontologoBuscado= odontologoService.buscarPorMatricula(matricula);
+        if (odontologoBuscado.isEmpty()){
+            throw new ResourceNotFoundException("Odontologo no encontrado");
+        }
+        return ResponseEntity.ok(odontologoBuscado);
     }
 
     @DeleteMapping("/eliminar/{id}")

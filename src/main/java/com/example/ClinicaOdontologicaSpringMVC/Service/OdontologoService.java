@@ -17,15 +17,19 @@ public class OdontologoService {
     public Odontologo guardarOdontologo(Odontologo odontologo){
         return odontologoRepository.save(odontologo);
     }
+
     public Optional<Odontologo> buscarPorId(Integer id){
         return odontologoRepository.findById(id);
     }
+
     public Optional<Odontologo> buscarPorMatricula(String matricula){
      return odontologoRepository.findByMatricula(matricula);
     }
+
     public List<Odontologo> listarOdontologos(){
         return odontologoRepository.findAll();
     }
+
     public void eliminarOdontologo(Integer id) throws BadRequestException {
         // Lógica para verificar si el odontólogo existe
         boolean exists = false; // lógica para verificar existencia
@@ -35,8 +39,8 @@ public class OdontologoService {
 
         // Lógica para eliminar el odontólogo
     }
+
     public Odontologo actualizarOdontologo (Odontologo odontologo) {
         return odontologoRepository.save(odontologo);
     }
-
 }
