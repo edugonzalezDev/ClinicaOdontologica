@@ -49,7 +49,7 @@ public class OdontologoController {
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public void eliminarOdontologo (@PathVariable Integer id) {
+    public void eliminarOdontologo (@PathVariable Integer id) throws BadRequestException {
         odontologoService.eliminarOdontologo(id);
     }
 

@@ -72,7 +72,7 @@ public class OdontologoServiceTest {
 
     @Test
     @Order(6)
-    public void eliminaOdontologo(){
+    public void eliminaOdontologo() throws BadRequestException {
         odontologoService.eliminarOdontologo(1);
         Optional<Odontologo> odontologoEliminado= odontologoService.buscarPorId(1);
         assertFalse(odontologoEliminado.isPresent());
