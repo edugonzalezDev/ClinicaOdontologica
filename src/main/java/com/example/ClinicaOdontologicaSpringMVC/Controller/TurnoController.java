@@ -58,8 +58,13 @@ public class TurnoController {
     }
 
     @DeleteMapping("/eliminar")
-    public void eliminarTurno(@RequestParam Integer id){
+    public ResponseEntity<String> eliminarTurno(@RequestParam Integer id) throws BadRequestException{
+        Optional<Turno> turnoAEliminar = turnoService.buscarPorId(id);
+        if (!turnoAEliminar.isPresent()) {
+            throw new BadRequestException("El turno que intentas eliminar no existe");
+        }
         turnoService.eliminarTurno(id);
+        return ResponseEntity.ok("Turno eliminado correctamente");
     }
 
     @PutMapping("/actualizar")
