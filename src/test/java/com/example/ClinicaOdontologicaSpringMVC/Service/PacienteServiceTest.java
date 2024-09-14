@@ -37,7 +37,8 @@ public class PacienteServiceTest {
                         .provincia("Canelones")
                         .build())
                 .correo("eduardo@gonzalez.com")
-                .build();Paciente pacienteGuardado= pacienteService.guardarPaciente(paciente);
+                .build();
+        Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
         assertEquals(1,pacienteGuardado.getId());
     }
 

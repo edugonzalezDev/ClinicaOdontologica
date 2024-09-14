@@ -1,5 +1,6 @@
 package com.example.ClinicaOdontologicaSpringMVC.Controller;
 
+import com.example.ClinicaOdontologicaSpringMVC.Dto.TurnoDTO;
 import com.example.ClinicaOdontologicaSpringMVC.Entity.Odontologo;
 import com.example.ClinicaOdontologicaSpringMVC.Entity.Paciente;
 import com.example.ClinicaOdontologicaSpringMVC.Entity.Turno;
@@ -26,11 +27,12 @@ public class TurnoController {
     private OdontologoService odontologoService;
 
     @PostMapping
-    public ResponseEntity<Turno> registrarTurno(@RequestBody Turno turno) throws BadRequestException {
+    public ResponseEntity<TurnoDTO> registrarTurno(@RequestBody Turno turno) throws BadRequestException {
         Optional<Paciente> pacienteBuscado = pacienteService.buscarPorId(turno.getPaciente().getId());
         Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorId(turno.getOdontologo().getId());
 
         if (pacienteBuscado.isPresent()&&odontologoBuscado.isPresent()) {
+
             return ResponseEntity.ok(turnoService.guardarTurno(turno));
 
         }else{
@@ -39,10 +41,12 @@ public class TurnoController {
         }
 
     }
+
     @GetMapping("/todos")
-    public ResponseEntity<List<Turno>> listarTodos() throws BadRequestException {
+    public ResponseEntity<List<TurnoDTO>> listarTodos() throws BadRequestException {
         return ResponseEntity.ok(turnoService.listarTurnos());
     }
+
     @GetMapping("/buscar/{id}")
     public ResponseEntity<Turno> buscarTurnoPorId(@PathVariable Integer id) throws ResourceNotFoundException {
         Optional<Turno> turnoBuscado = turnoService.buscarPorId(id);
@@ -52,10 +56,12 @@ public class TurnoController {
             throw new ResourceNotFoundException("Turno no encontrado");
         }
     }
+
     @DeleteMapping("/eliminar")
     public void eliminarTurno(@RequestParam Integer id){
         turnoService.eliminarTurno(id);
     }
+
     @PutMapping("/actualizar")
     public Turno actualizarTurno(@RequestBody Turno turno) throws BadRequestException {
         if (turno.getId() == null) {
