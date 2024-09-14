@@ -28,8 +28,8 @@ public class OdontologoService {
     public void eliminarOdontologo (Integer id) {
         odontologoRepository.deleteById(id);
     }
-    public void actualizarOdontologo (Odontologo odontologo) {
-        odontologoRepository.save(odontologo);
+    public Odontologo actualizarOdontologo (Odontologo odontologo) {
+        return odontologoRepository.save(odontologo);
     }
 
 }

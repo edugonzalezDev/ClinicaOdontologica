@@ -23,12 +23,8 @@ public class PacienteService {
     public Optional<Paciente> buscarPorCorreo(String correo){
         return pacienteRepository.findByCorreo(correo);
     }
-    public List<Paciente> listarPacientes() throws BadRequestException {
-        List<Paciente> pacientes = pacienteRepository.findAll();
-        if (pacientes.isEmpty()) {
-            throw new BadRequestException("No se encontraron pacientes registrados");
-        }
-        return pacientes;
+    public List<Paciente> listarPacientes() {
+        return pacienteRepository.findAll();
     }
     public Paciente actualizarPaciente (Paciente paciente) {
         return pacienteRepository.save(paciente);

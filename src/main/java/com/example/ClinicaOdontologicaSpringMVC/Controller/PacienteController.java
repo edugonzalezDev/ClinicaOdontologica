@@ -32,8 +32,12 @@ public class PacienteController {
     }
 
     @GetMapping("/todos")
-    public ResponseEntity<List<Paciente>> listarTodos() throws BadRequestException {
-        return ResponseEntity.ok(pacienteService.listarPacientes());
+    public ResponseEntity<List<Paciente>> listarTodos() throws ResourceNotFoundException {
+        List<Paciente> pacientes = pacienteService.listarPacientes();
+        if (pacientes.isEmpty()){
+            throw new ResourceNotFoundException("No se encontraron pacientes registrados");
+        }
+        return ResponseEntity.ok(pacientes);
     }
 
     @GetMapping("/buscar/{id}")
