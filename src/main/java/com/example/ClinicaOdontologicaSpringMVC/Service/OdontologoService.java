@@ -1,5 +1,6 @@
 package com.example.ClinicaOdontologicaSpringMVC.Service;
 
+import com.example.ClinicaOdontologicaSpringMVC.Exception.BadRequestException;
 import com.example.ClinicaOdontologicaSpringMVC.Repository.OdontologoRepository;
 import com.example.ClinicaOdontologicaSpringMVC.Entity.Odontologo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,14 @@ public class OdontologoService {
     public List<Odontologo> listarOdontologos(){
         return odontologoRepository.findAll();
     }
-    public void eliminarOdontologo (Integer id) {
-        odontologoRepository.deleteById(id);
+    public void eliminarOdontologo(Integer id) throws BadRequestException {
+        // Lógica para verificar si el odontólogo existe
+        boolean exists = false; // lógica para verificar existencia
+        if (!exists) {
+            throw new BadRequestException("Odontólogo con ID " + id + " no encontrado");
+        }
+
+        // Lógica para eliminar el odontólogo
     }
     public Odontologo actualizarOdontologo (Odontologo odontologo) {
         return odontologoRepository.save(odontologo);
