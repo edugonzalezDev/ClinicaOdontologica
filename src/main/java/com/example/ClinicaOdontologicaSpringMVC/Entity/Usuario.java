@@ -22,9 +22,9 @@ public class Usuario implements UserDetails {
     private Long id;
     @Column
     private String nombre;
-    @Column
+    @Column(unique = true)
     private String username;
-    @Column
+    @Column(unique = true)
     private String email;
     @Column
     private String password;

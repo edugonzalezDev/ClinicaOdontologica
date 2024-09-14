@@ -17,16 +17,12 @@ public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
 
-    public PacienteController() {
-        pacienteService= new PacienteService();
-    }
-
     @GetMapping("/buscar")
     public ResponseEntity<Optional<Paciente>> buscarPorCorreo(@RequestParam("email") String email) throws ResourceNotFoundException {
         Optional<Paciente> pacienteBuscado=pacienteService.buscarPorCorreo(email);
         if (pacienteBuscado.isPresent()) {
             return ResponseEntity.ok(pacienteBuscado);
-        }else {
+        } else {
             throw new ResourceNotFoundException("Paciente no encontrado");
         }
     }
@@ -46,14 +42,12 @@ public class PacienteController {
         if(pacienteBuscado.isPresent()){
             return ResponseEntity.ok(pacienteBuscado);
         }else{
-            //en ese punto arroje una exception
             throw new ResourceNotFoundException("Paciente no encontrado");
         }
     }
 
     @PostMapping
     public ResponseEntity<Paciente> guardarPaciente(@RequestBody Paciente paciente) throws BadRequestException {
-        // Validaciones antes de guardar
         if (paciente.getNombre() == null || paciente.getNombre().isEmpty()) {
             throw new BadRequestException("El nombre del paciente no puede estar vacío");
         }
@@ -66,7 +60,6 @@ public class PacienteController {
         if (paciente.getCorreo() == null || paciente.getCorreo().isEmpty()) {
             throw new BadRequestException("El correo del paciente no puede estar vacío");
         }
-
         return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
     }
 
@@ -85,11 +78,9 @@ public class PacienteController {
         if (paciente.getId() == null) {
             throw new BadRequestException("El ID del paciente no puede ser nulo");
         }
-        // Otras validaciones, como nombres, apellidos, etc.
         if (paciente.getNombre() == null || paciente.getNombre().isEmpty()) {
             System.out.println("El nombre del paciente no puede estar vacío");
             throw new BadRequestException("El nombre del paciente no puede estar vacío");
-
         }
         if (paciente.getApellido() == null || paciente.getApellido().isEmpty()) {
             throw new BadRequestException("El apellido del paciente no puede estar vacío");
@@ -104,5 +95,4 @@ public class PacienteController {
 
         return pacienteService.actualizarPaciente(paciente);
     }
-
 }

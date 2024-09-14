@@ -32,6 +32,7 @@ public class Paciente {
 
     @NotNull
     @Size(min = 3, max = 15)
+    @Column(unique = true)
     private String cedula;
 
 
@@ -43,6 +44,7 @@ public class Paciente {
 
     @NotNull
     @Email
+    @Column(unique = true)
     private String correo;
     @OneToMany(mappedBy = "paciente",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore

@@ -27,14 +27,14 @@ public class DatosIniciales implements ApplicationRunner {
 
         // Verificar si el usuario ya existe antes de guardarlo
         if (usuarioRepository.findByEmail("admin@admin.com").isEmpty()) {
-            Usuario usuarioAInsertar = new Usuario("jorgito", "jorgitodh", "admin@admin.com", passCifrado, UsuarioRole.ROLE_ADMIN);
+            Usuario usuarioAInsertar = new Usuario("administrador", "admin", "admin@admin.com", passCifrado, UsuarioRole.ROLE_ADMIN);
             usuarioRepository.save(usuarioAInsertar);
             logger.info("Usuario 'admin@admin.com' cargado con éxito");
         } else {
             logger.info("Usuario 'admin@admin.com' ya existe, no se cargó de nuevo.");
         }
         if (usuarioRepository.findByEmail("user@user.com").isEmpty()) {
-            Usuario usuarioAInsertar2 = new Usuario("usuario", "usuariodh", "user@user.com", passCifrado, UsuarioRole.ROLE_USER);
+            Usuario usuarioAInsertar2 = new Usuario("usuario", "user", "user@user.com", passCifrado, UsuarioRole.ROLE_USER);
             usuarioRepository.save(usuarioAInsertar2);
             logger.info("Usuario 'user@user.com' cargado con éxito");;
         } else {

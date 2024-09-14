@@ -24,7 +24,7 @@ public class Odontologo {
 
     @NotNull
     @Size(min = 3, max = 15)
-    @Column
+    @Column(unique = true)
     private String matricula;
 
     @NotNull
