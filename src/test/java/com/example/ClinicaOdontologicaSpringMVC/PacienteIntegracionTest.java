@@ -1,13 +1,8 @@
 package com.example.ClinicaOdontologicaSpringMVC;
 
-import com.example.ClinicaOdontologicaSpringMVC.Dto.TurnoDTO;
 import com.example.ClinicaOdontologicaSpringMVC.Entity.Domicilio;
-import com.example.ClinicaOdontologicaSpringMVC.Entity.Odontologo;
 import com.example.ClinicaOdontologicaSpringMVC.Entity.Paciente;
-import com.example.ClinicaOdontologicaSpringMVC.Entity.Turno;
-import com.example.ClinicaOdontologicaSpringMVC.Service.OdontologoService;
 import com.example.ClinicaOdontologicaSpringMVC.Service.PacienteService;
-import com.example.ClinicaOdontologicaSpringMVC.Service.TurnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,19 +12,14 @@ import java.time.LocalDate;
 
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false) //deshabilita login en esta clase
-public class TurnoIntegracionTest {
+public class PacienteIntegracionTest {
 
-    @Autowired
-    private TurnoService turnoService;
     @Autowired
     private PacienteService pacienteService;
     @Autowired
-    private OdontologoService odontologoService;
-    @Autowired
     private MockMvc mockMvc;
 
-    public void cargarTurno(){
-
+    public void cargarPaciente() {
         Paciente paciente = Paciente.builder()
                 .nombre("Eduardo")
                 .apellido("Gonzalez")
@@ -44,22 +34,5 @@ public class TurnoIntegracionTest {
                 .correo("eduardo@gonzalez.com")
                 .build();
         Paciente pacienteGuardado = pacienteService.guardarPaciente(paciente);
-
-        Odontologo odontologo = Odontologo.builder()
-                .nombre("Julian")
-                .apellido("Espinoza")
-                .matricula("1234")
-                .build();
-        Odontologo odontologoGuardado= odontologoService.guardarOdontologo(odontologo);
-
-        Turno turno = Turno.builder()
-                .odontologo(odontologoGuardado)
-                .paciente(pacienteGuardado)
-                .fecha(LocalDate.of(2024,11,25))
-                .build();
-
-        TurnoDTO turnoGuardado = turnoService.guardarTurno(turno);
-
     }
-
 }
