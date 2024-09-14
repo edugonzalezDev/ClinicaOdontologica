@@ -46,8 +46,22 @@ public class PacienteController {
         }
     }
     @PostMapping
-    public Paciente guardarPaciente(@RequestBody Paciente paciente){
-        return pacienteService.guardarPaciente(paciente);
+    public ResponseEntity<Paciente> guardarPaciente(@RequestBody Paciente paciente) throws BadRequestException {
+        // Validaciones antes de guardar
+        if (paciente.getNombre() == null || paciente.getNombre().isEmpty()) {
+            throw new BadRequestException("El nombre del paciente no puede estar vacío");
+        }
+        if (paciente.getApellido() == null || paciente.getApellido().isEmpty()) {
+            throw new BadRequestException("El apellido del paciente no puede estar vacío");
+        }
+        if (paciente.getCedula() == null || paciente.getCedula().isEmpty()) {
+            throw new BadRequestException("La cédula del paciente no puede estar vacía");
+        }
+        if (paciente.getCorreo() == null || paciente.getCorreo().isEmpty()) {
+            throw new BadRequestException("El correo del paciente no puede estar vacío");
+        }
+
+        return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
     }
     @DeleteMapping("/eliminar")
     public void eliminarPaciente(@RequestParam Integer id){

@@ -1,14 +1,10 @@
 window.addEventListener('load', function () {
-
-    //Al cargar la pagina buscamos y obtenemos el formulario donde estarán
-    //los datos que el usuario cargará de la nueva pelicula
     const formulario = document.querySelector('#add_new_paciente');
 
-    //Ante un submit del formulario se ejecutará la siguiente funcion
     formulario.addEventListener('submit', function (event) {
         event.preventDefault(); // Evita que se envíe el formulario por defecto
 
-       //creamos un JSON que tendrá los datos de la nueva película
+        // Creamos un JSON que tendrá los datos del nuevo paciente
         const formData = {
             nombre: document.querySelector('#nombre').value,
             apellido: document.querySelector('#apellido').value,
@@ -22,8 +18,7 @@ window.addEventListener('load', function () {
             },
             correo: document.querySelector('#correo').value,
         };
-        //invocamos utilizando la función fetch la API clinicaOdontologica con el método POST que guardará
-        //el paciente que enviaremos en formato JSON
+
         const url = '/paciente';
         const settings = {
             method: 'POST',
@@ -31,14 +26,21 @@ window.addEventListener('load', function () {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(formData)
-        }
+        };
 
         fetch(url, settings)
             .then(response => {
                 if (!response.ok) {
-                    // Si la respuesta no es exitosa (por ejemplo, error 400), lanzamos un error
-                    return response.json().then(errorData => {
-                        throw new Error(errorData.message || 'Error al agregar el paciente, verifique los campos: Todos los campos deben estar completos, Nombre, Apellido y Cédula deben tener entre 3 y 15 caracteres y el Correo electrónico debe tener un formato correcto');
+                    // Intentar obtener el mensaje de error si es un JSON
+                    return response.text().then(errorText => {
+                        let errorMessage;
+                        try {
+                            const errorData = JSON.parse(errorText);
+                            errorMessage = errorData.message || 'Error al agregar el paciente, verifique los campos.';
+                        } catch (e) {
+                            errorMessage = errorText || 'Error al agregar el paciente, verifique los campos: Todos los campos deben estar completos, Nombre, Apellido y Cédula deben tener entre 3 y 15 caracteres y el Correo electrónico debe tener un formato correcto';
+                        }
+                        throw new Error(errorMessage);
                     });
                 }
                 return response.json(); // Si la respuesta es correcta, convertimos a JSON
@@ -74,12 +76,4 @@ window.addEventListener('load', function () {
         document.querySelector('#localidad').value = "";
         document.querySelector('#provincia').value = "";
     }
-//    (function(){
-//        let pathname = window.location.pathname;
-//        if(pathname === "/"){
-//            document.querySelector(".nav .nav-item a:first").addClass("active");
-//        } else if (pathname == "./post_odontologos.html") {
-//            document.querySelector(".nav .nav-item a:last").addClass("active");
-//        }
-//    })();
 });
