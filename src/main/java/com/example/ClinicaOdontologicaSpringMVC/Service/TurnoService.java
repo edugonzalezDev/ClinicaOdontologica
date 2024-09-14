@@ -32,6 +32,7 @@ public class TurnoService {
     }
 
     public List<TurnoDTO> listarTurnos() throws BadRequestException {
+
         List<Turno> turnos = turnoRepository.findAll();
         List<TurnoDTO> turnosDTO = new ArrayList<>();
         for (Turno turno : turnos) {
