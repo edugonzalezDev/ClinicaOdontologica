@@ -1,15 +1,18 @@
-package com.example.ClinicaOdontologicaSpringMVC.entity;
+package com.example.ClinicaOdontologicaSpringMVC.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @Entity
 @Table(name="domicilio")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Domicilio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

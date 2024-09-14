@@ -1,4 +1,4 @@
-package com.example.ClinicaOdontologicaSpringMVC.entity;
+package com.example.ClinicaOdontologicaSpringMVC.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -14,6 +14,9 @@ import java.util.List;
 @Data
 @Entity
 @Table(name="paciente")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

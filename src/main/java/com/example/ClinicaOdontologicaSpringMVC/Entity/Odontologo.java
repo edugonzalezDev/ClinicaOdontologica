@@ -1,4 +1,4 @@
-package com.example.ClinicaOdontologicaSpringMVC.entity;
+package com.example.ClinicaOdontologicaSpringMVC.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -15,6 +15,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Odontologo {
     //atributos de la clase paciente
     @Id

@@ -1,14 +1,12 @@
-package com.example.ClinicaOdontologicaSpringMVC.controller;
+package com.example.ClinicaOdontologicaSpringMVC.Controller;
 
-import com.example.ClinicaOdontologicaSpringMVC.entity.Odontologo;
-import com.example.ClinicaOdontologicaSpringMVC.entity.Paciente;
-import com.example.ClinicaOdontologicaSpringMVC.exception.BadRequestException;
-import com.example.ClinicaOdontologicaSpringMVC.exception.ResourceNotFoundException;
-import com.example.ClinicaOdontologicaSpringMVC.service.PacienteService;
+import com.example.ClinicaOdontologicaSpringMVC.Entity.Paciente;
+import com.example.ClinicaOdontologicaSpringMVC.Exception.BadRequestException;
+import com.example.ClinicaOdontologicaSpringMVC.Exception.ResourceNotFoundException;
+import com.example.ClinicaOdontologicaSpringMVC.Service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.ResourceAccessException;
 
 import java.util.List;
 import java.util.Optional;
@@ -34,9 +32,14 @@ public class PacienteController {
     }
 
     @GetMapping("/todos")
-    public ResponseEntity<List<Paciente>> listarTodos() throws BadRequestException {
-        return ResponseEntity.ok(pacienteService.listarPacientes());
+    public ResponseEntity<List<Paciente>> listarTodos() throws ResourceNotFoundException {
+        List<Paciente> pacientes = pacienteService.listarPacientes();
+        if (pacientes.isEmpty()){
+            throw new ResourceNotFoundException("No se encontraron pacientes registrados");
+        }
+        return ResponseEntity.ok(pacientes);
     }
+
     @GetMapping("/buscar/{id}")
     public   ResponseEntity<Optional<Paciente>> buscarPorId (@PathVariable Integer id) throws ResourceNotFoundException {
         Optional<Paciente> pacienteBuscado= pacienteService.buscarPorId(id);
@@ -47,14 +50,36 @@ public class PacienteController {
             throw new ResourceNotFoundException("Paciente no encontrado");
         }
     }
+
     @PostMapping
-    public Paciente guardarPaciente(@RequestBody Paciente paciente){
-        return pacienteService.guardarPaciente(paciente);
+    public ResponseEntity<Paciente> guardarPaciente(@RequestBody Paciente paciente) throws BadRequestException {
+        // Validaciones antes de guardar
+        if (paciente.getNombre() == null || paciente.getNombre().isEmpty()) {
+            throw new BadRequestException("El nombre del paciente no puede estar vacío");
+        }
+        if (paciente.getApellido() == null || paciente.getApellido().isEmpty()) {
+            throw new BadRequestException("El apellido del paciente no puede estar vacío");
+        }
+        if (paciente.getCedula() == null || paciente.getCedula().isEmpty()) {
+            throw new BadRequestException("La cédula del paciente no puede estar vacía");
+        }
+        if (paciente.getCorreo() == null || paciente.getCorreo().isEmpty()) {
+            throw new BadRequestException("El correo del paciente no puede estar vacío");
+        }
+
+        return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
     }
+
     @DeleteMapping("/eliminar")
-    public void eliminarPaciente(@RequestParam Integer id){
+    public ResponseEntity<String> eliminarPaciente(@RequestParam Integer id) throws BadRequestException {
+        Optional<Paciente> pacienteBuscado = pacienteService.buscarPorId(id);
+        if (!pacienteBuscado.isPresent()) {
+            throw new BadRequestException("El paciente con el ID proporcionado no existe");
+        }
         pacienteService.eliminarPaciente(id);
+        return ResponseEntity.ok("Paciente eliminado correctamente");
     }
+
     @PutMapping("/actualizar")
     public Paciente actualizarPaciente(@RequestBody Paciente paciente) throws BadRequestException {
         if (paciente.getId() == null) {

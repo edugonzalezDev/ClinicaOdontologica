@@ -1,4 +1,4 @@
-package com.example.ClinicaOdontologicaSpringMVC.exception;
+package com.example.ClinicaOdontologicaSpringMVC.Exception;
 
 public class BadRequestException extends Exception{
 

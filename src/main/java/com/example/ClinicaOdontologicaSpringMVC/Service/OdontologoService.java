@@ -1,7 +1,7 @@
-package com.example.ClinicaOdontologicaSpringMVC.service;
+package com.example.ClinicaOdontologicaSpringMVC.Service;
 
-import com.example.ClinicaOdontologicaSpringMVC.repository.OdontologoRepository;
-import com.example.ClinicaOdontologicaSpringMVC.entity.Odontologo;
+import com.example.ClinicaOdontologicaSpringMVC.Repository.OdontologoRepository;
+import com.example.ClinicaOdontologicaSpringMVC.Entity.Odontologo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,8 +28,8 @@ public class OdontologoService {
     public void eliminarOdontologo (Integer id) {
         odontologoRepository.deleteById(id);
     }
-    public void actualizarOdontologo (Odontologo odontologo) {
-        odontologoRepository.save(odontologo);
+    public Odontologo actualizarOdontologo (Odontologo odontologo) {
+        return odontologoRepository.save(odontologo);
     }
 
 }

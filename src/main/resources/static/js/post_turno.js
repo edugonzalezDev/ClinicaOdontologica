@@ -86,11 +86,18 @@ window.addEventListener('load', function () {
         };
 
         fetch(url, settings)
-            .then(response =>  {
+            .then(response => {
                 if (!response.ok) {
-                   // Si la respuesta no es exitosa (por ejemplo, error 400), lanzamos un error
-                    return response.json().then(errorData => {
-                        throw new Error(errorData.message || 'Error al registrar turno, verifique los campos: Todos los campos deben estar completos');
+                    // Intentar obtener el mensaje de error si es un JSON
+                    return response.text().then(errorText => {
+                        let errorMessage;
+                        try {
+                            const errorData = JSON.parse(errorText);
+                            errorMessage = errorData.message || 'Error al registrar turno, verifique los campos: Todos los campos deben estar completos';
+                        } catch (e) {
+                            errorMessage = errorText; // Si no es JSON, usar el texto directamente
+                        }
+                        throw new Error(errorMessage);
                     });
                 }
                 return response.json(); // Si la respuesta es correcta, convertimos a JSON

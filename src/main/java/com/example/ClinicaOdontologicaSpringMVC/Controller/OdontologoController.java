@@ -27,10 +27,7 @@ public class OdontologoController {
     }
 
     @PostMapping
-    public ResponseEntity<Odontologo> guardarOdontologo(@RequestBody Odontologo odontologo) throws BadRequestException {
-        if (odontologo.getNombre() == null || odontologo.getApellido() == null) {
-            throw new BadRequestException("El nombre o apellido del odontólogo no pueden ser nulos");
-        }
+    public ResponseEntity<Odontologo> guardarOdontologo(@RequestBody Odontologo odontologo){
         return ResponseEntity.ok(odontologoService.guardarOdontologo(odontologo));
     }
 
