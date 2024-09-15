@@ -48,6 +48,9 @@ public class PacienteController {
 
     @PostMapping
     public ResponseEntity<Paciente> guardarPaciente(@RequestBody Paciente paciente) throws BadRequestException {
+        Optional<Paciente> pacienteAEliminar = pacienteService.buscarPorCorreo(paciente.getCorreo());
+        boolean existeCedula = pacienteService.validarCedula(paciente.getCedula());
+
         if (paciente.getNombre() == null || paciente.getNombre().isEmpty()) {
             throw new BadRequestException("El nombre del paciente no puede estar vacío");
         }
@@ -59,6 +62,24 @@ public class PacienteController {
         }
         if (paciente.getCorreo() == null || paciente.getCorreo().isEmpty()) {
             throw new BadRequestException("El correo del paciente no puede estar vacío");
+        }
+        if (existeCedula){
+            throw new BadRequestException("Ya existe un paciente con la cedula proporcionada");
+        }
+        if (pacienteAEliminar.isPresent()){
+            throw new BadRequestException("Ya existe un paciente con el correo proporcionado");
+        }
+        if (paciente.getDomicilio().getCalle() == null || paciente.getDomicilio().getCalle().isEmpty()) {
+            throw new BadRequestException("La calle del domicilio no puede estar vacía");
+        }
+        if (paciente.getDomicilio().getNumero() == null || paciente.getDomicilio().getNumero().toString().isEmpty()) {
+            throw new BadRequestException("El número del domicilio no puede estar vacío");
+        }
+        if (paciente.getDomicilio().getProvincia() == null || paciente.getDomicilio().getProvincia().isEmpty()) {
+            throw new BadRequestException("La provincia del domicilio no puede estar vacía");
+        }
+        if (paciente.getDomicilio().getLocalidad() == null || paciente.getDomicilio().getLocalidad().isEmpty()) {
+            throw new BadRequestException("La localidad del domicilio no puede estar vacía");
         }
         return ResponseEntity.ok(pacienteService.guardarPaciente(paciente));
     }

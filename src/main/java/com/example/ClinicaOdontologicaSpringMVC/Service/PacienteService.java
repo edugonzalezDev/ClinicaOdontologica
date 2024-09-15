@@ -16,9 +16,12 @@ public class PacienteService {
     public Paciente guardarPaciente(Paciente paciente){
         return pacienteRepository.save(paciente);
     }
-
     public Optional<Paciente> buscarPorId(Integer id){
         return pacienteRepository.findById(id);
+    }
+
+    public boolean validarCedula(String cedula){
+        return pacienteRepository.existsByCedula(cedula);
     }
 
     public Optional<Paciente> buscarPorCorreo(String correo){
