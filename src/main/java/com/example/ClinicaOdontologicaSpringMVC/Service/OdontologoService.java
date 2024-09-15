@@ -31,13 +31,14 @@ public class OdontologoService {
     }
 
     public void eliminarOdontologo(Integer id) throws BadRequestException {
-        // Lógica para verificar si el odontólogo existe
-        boolean exists = false; // lógica para verificar existencia
+        // Verificar si el odontólogo existe en la base de datos
+        boolean exists = odontologoRepository.existsById(id);
+
         if (!exists) {
             throw new BadRequestException("Odontólogo con ID " + id + " no encontrado");
         }
 
-        // Lógica para eliminar el odontólogo
+        odontologoRepository.deleteById(id);
     }
 
     public Odontologo actualizarOdontologo (Odontologo odontologo) {
